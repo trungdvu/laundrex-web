@@ -1,7 +1,11 @@
+import Layout from '../common/layout/layout';
+import Seo from '../common/seo/seo';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Laundrex
-    </main>
+    <Layout>
+      <Seo />
+      <main className="py-24">This is a fucking Laundry service</main>
+    </Layout>
   );
 }

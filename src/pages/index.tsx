@@ -1,5 +1,5 @@
-import Layout from '../common/layout/layout';
-import Seo from '../common/seo/seo';
+import Layout from '../components/layout/layout';
+import Seo from '../components/seo/seo';
 
 export default function Home() {
   return (

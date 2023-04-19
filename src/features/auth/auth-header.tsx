@@ -6,8 +6,8 @@ export default function AuthHeader({ className }: AuthHeaderProps) {
   return (
     <header className={cn('py-8', className)}>
       <div className="flex items-center">
-        <Image src="/laundrex.svg" width={48} height={48} alt="laundrex" />
-        <h3 className="ml-2 text-2xl font-extrabold text-black">Laundrex</h3>
+        <Image src="/laundrex.svg" width={54} height={54} alt="laundrex" />
+        <h3 className="ml-2 text-3xl font-extrabold text-black">Laundrex</h3>
       </div>
     </header>
   );

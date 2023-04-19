@@ -1,9 +1,14 @@
 import cn from 'classnames';
+import React, { ForwardedRef, LegacyRef } from 'react';
 import { InputProps } from './input.type';
 
-export default function Input({ className, ...rest }: InputProps) {
+const Input = React.forwardRef<
+  React.LegacyRef<HTMLInputElement> | undefined,
+  InputProps
+>(({ className, ...rest }, ref) => {
   return (
     <input
+      {...rest}
       className={cn(
         'w-80 p-4',
         'text-lg font-medium',
@@ -15,7 +20,11 @@ export default function Input({ className, ...rest }: InputProps) {
         'transition duration-75',
         className,
       )}
-      {...rest}
+      ref={ref as any}
     />
   );
-}
+});
+
+Input.displayName = 'Input';
+
+export default Input;

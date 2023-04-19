@@ -14,6 +14,7 @@
     "check-lint": "eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^2.0.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.37",
     "@types/react-dom": "18.0.11",
@@ -25,10 +26,12 @@
     "postcss": "8.4.22",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "husky": "^8.0.0",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7"

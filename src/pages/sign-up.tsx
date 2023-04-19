@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Layout from '../../components/layout/layout';
-import Seo from '../../components/seo/seo';
+import Layout from '../components/layout/layout';
+import Seo from '../components/seo/seo';
 
 export default function SignIn() {
   return (

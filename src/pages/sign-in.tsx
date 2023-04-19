@@ -32,8 +32,8 @@ export default function SignIn() {
       <main className="mx-auto max-w-3xl">
         <div className="flex w-full gap-8">
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-            <h4 className="text-2xl font-bold">Sign in</h4>
-            <div className="mt-6 flex flex-col">
+            <h4 className="text-xl font-bold">Sign in</h4>
+            <div className="mt-5 flex flex-col">
               <InputLabel>Email address</InputLabel>
               <Input
                 className="mt-2 w-full"
@@ -43,7 +43,7 @@ export default function SignIn() {
                 {...register('email')}
               />
             </div>
-            <div className="mt-6 flex flex-col">
+            <div className="mt-5 flex flex-col">
               <InputLabel>Password</InputLabel>
               <Input
                 className="mt-2 w-full"
@@ -52,7 +52,7 @@ export default function SignIn() {
                 {...register('password')}
               />
             </div>
-            <Button className="mt-6 w-full" type="submit">
+            <Button className="mt-5 w-full" type="submit">
               Sign in
             </Button>
             <div className="mt-2 flex items-center justify-between">
@@ -64,14 +64,14 @@ export default function SignIn() {
                   {...register('email')}
                 />
                 <label
-                  className="ml-2 cursor-pointer text-sm font-medium text-neutral-400"
+                  className="ml-2 cursor-pointer text-sm text-neutral-400"
                   htmlFor="remember"
                 >
                   Remember me
                 </label>
               </div>
               <Link
-                className="text-sm font-medium text-neutral-400 hover:underline"
+                className="text-sm text-neutral-400 hover:underline"
                 href="#help"
               >
                 Need help?
@@ -88,7 +88,7 @@ export default function SignIn() {
           </div>
         </div>
 
-        <h6 className="mt-12 text-lg font-medium">
+        <h6 className="mt-12 text-lg">
           New to Laundrex?
           <Link
             href="/sign-up"

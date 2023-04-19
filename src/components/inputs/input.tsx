@@ -11,12 +11,12 @@ const Input = React.forwardRef<
       {...rest}
       className={cn(
         'w-80 p-4',
-        'text-lg font-medium',
+        'text-lg',
         'border border-neutral-200',
         'bg-neutral-50',
         'placeholder:font-normal placeholder:text-neutral-400',
         'hover:border-neutral-400 hover:bg-neutral-100',
-        'focus:outline-none',
+        'focus:border-neutral-400 focus:outline-none focus:ring-0',
         'transition duration-75',
         className,
       )}

@@ -7,7 +7,7 @@ export default function InputLabel({
   ...rest
 }: InputLabelProps) {
   return (
-    <label className={cn('text-lg font-bold', className)} {...rest}>
+    <label className={cn('text-lg font-medium', className)} {...rest}>
       {children}
     </label>
   );

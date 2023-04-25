@@ -1,5 +1,10 @@
 import cn from 'classnames';
-import { InputLabelProps } from './input-label.type';
+import { DetailedHTMLProps, LabelHTMLAttributes } from 'react';
+
+export type InputLabelProps = {} & DetailedHTMLProps<
+  LabelHTMLAttributes<HTMLLabelElement>,
+  HTMLLabelElement
+>;
 
 export default function InputLabel({
   children,

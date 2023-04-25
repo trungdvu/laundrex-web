@@ -1,6 +1,10 @@
 import cn from 'classnames';
-import React, { ForwardedRef, LegacyRef } from 'react';
-import { InputProps } from './input.type';
+import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+
+export type InputProps = {} & DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 const Input = React.forwardRef<
   React.LegacyRef<HTMLInputElement> | undefined,

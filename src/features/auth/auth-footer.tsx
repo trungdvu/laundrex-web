@@ -1,6 +1,10 @@
 import { UilAngleDown } from '@iconscout/react-unicons';
 import cn from 'classnames';
-import { AuthFooterProps } from './auth-footer.type';
+
+export type AuthFooterProps = {
+  className?: string;
+  languageButtonVisible?: boolean;
+};
 
 export default function AuthFooter({
   className,

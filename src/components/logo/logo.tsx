@@ -1,6 +1,15 @@
 import cn from 'classnames';
 import Image from 'next/image';
-import { LogoProps } from './logo.type';
+import { CSSProperties } from 'react';
+
+export type LogoProps = {
+  width?: number;
+  height?: number;
+  src?: string;
+  className?: string;
+  style?: CSSProperties;
+  alt?: string;
+};
 
 export default function Logo({
   width = 64,

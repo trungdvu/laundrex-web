@@ -7,6 +7,8 @@ import Layout from '../components/layout/layout';
 import Seo from '../components/seo/seo';
 import AuthFooter from '../features/auth/auth-footer';
 import AuthHeader from '../features/auth/auth-header';
+import { useAuth } from '@/contexts/auth/auth.context';
+import { useState } from 'react';
 
 type SignUpInputs = {
   email: string;
@@ -15,9 +17,13 @@ type SignUpInputs = {
 
 export default function SignUp() {
   const { register, handleSubmit } = useForm<SignUpInputs>();
+  const [loading, setLoading] = useState(false);
+  const { signUp } = useAuth();
 
-  const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
-    console.log('data:', data);
+  const onSubmit: SubmitHandler<SignUpInputs> = async ({ email, password }) => {
+    setLoading(true);
+    await signUp(email, password);
+    setLoading(false);
   };
 
   return (
@@ -61,7 +67,7 @@ export default function SignUp() {
               {...register('password')}
             />
           </div>
-          <Button className="mt-5 w-full" type="submit">
+          <Button className="mt-5 w-full" type="submit" loading={loading}>
             Sign up
           </Button>
         </form>

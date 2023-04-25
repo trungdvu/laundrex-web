@@ -1,6 +1,10 @@
 import cn from 'classnames';
 import Image from 'next/image';
-import { AuthHeaderProps } from './auth-header.type';
+
+export type AuthHeaderProps = {
+  className?: string;
+  textBrandVisible?: boolean;
+};
 
 export default function AuthHeader({
   className,

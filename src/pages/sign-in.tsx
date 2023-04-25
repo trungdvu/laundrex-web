@@ -1,5 +1,7 @@
+import { useAuth } from '@/contexts/auth/auth.context';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import doodle14 from '../../public/highlights/doodle-14.svg';
 import Button from '../components/buttons/button';
@@ -13,14 +15,20 @@ import AuthHeader from '../features/auth/auth-header';
 type SignInInputs = {
   email: string;
   password: string;
-  remember: string;
+  remember?: boolean;
 };
 
 export default function SignIn() {
-  const { register, handleSubmit } = useForm<SignInInputs>();
+  const { register, handleSubmit } = useForm<SignInInputs>({
+    values: { email: 'admin@gmail.com', password: '1234' },
+  });
+  const [loading, setLoading] = useState(false);
+  const { signIn } = useAuth();
 
-  const onSubmit: SubmitHandler<SignInInputs> = (data) => {
-    console.log('data:', data);
+  const onSubmit: SubmitHandler<SignInInputs> = async ({ email, password }) => {
+    setLoading(true);
+    const result = await signIn(email, password);
+    setLoading(false);
   };
 
   return (
@@ -52,7 +60,7 @@ export default function SignIn() {
                 {...register('password')}
               />
             </div>
-            <Button className="mt-5 w-full" type="submit">
+            <Button className="mt-5 w-full" type="submit" loading={loading}>
               Sign in
             </Button>
             <div className="mt-2 flex items-center justify-between">
@@ -84,7 +92,12 @@ export default function SignIn() {
               <h1 className="text-5xl">LAUNDRY</h1>
               <h2 className="text-right">SERVICE</h2>
             </div>
-            <Image className="mt-2" priority src={doodle14} alt="highlight" />
+            <Image
+              className="mt-2 px-4"
+              priority
+              src={doodle14}
+              alt="highlight"
+            />
           </div>
         </div>
 

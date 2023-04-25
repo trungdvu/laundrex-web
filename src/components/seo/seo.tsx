@@ -1,7 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { defaultMetaData } from './seo.config';
-import { SeoProps } from './seo.type';
+
+export type SeoProps = {
+  date?: string;
+  templateTitle?: string;
+} & Partial<typeof defaultMetaData>;
 
 export default function Seo(props: SeoProps) {
   const router = useRouter();

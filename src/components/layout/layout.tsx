@@ -1,6 +1,11 @@
 import Footer from './footer';
 import Header from './header';
-import { LayoutProps } from './layout.type';
+
+export type LayoutProps = {
+  children: React.ReactNode;
+  header?: JSX.Element | null;
+  footer?: JSX.Element | null;
+};
 
 export default function Layout({ children, header, footer }: LayoutProps) {
   return (

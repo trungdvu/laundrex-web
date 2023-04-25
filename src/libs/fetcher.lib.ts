@@ -1,19 +1,22 @@
 import { API_BASE } from '@/constants/constant';
 
-type Options = {
-  url: string;
-  method: 'GET' | 'POST' | 'PATCH' | 'DELTE';
-  data?: any;
-  apiBase?: string;
+type GetOptions = {
+  method: 'GET';
+  data?: undefined;
 };
 
-export async function fetcher({ url, method, data }: Options) {
-  const res = await fetch(`${API_BASE}${url}`, {
+type OtherOptions = {
+  method: 'POST' | 'PATCH' | 'DELTE';
+  data?: any;
+};
+
+type Options = GetOptions | OtherOptions;
+
+export async function fetcher(path: string, { method, data }: Options) {
+  const res = await fetch(`${API_BASE}${path}`, {
     method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' },
+    body: method !== 'GET' ? JSON.stringify(data) : undefined,
   });
 
   if (res.status > 399 && res.status < 200) {

@@ -1,4 +1,9 @@
+import { HTTP_STATUS } from '@/constants/constant';
+import { signUp } from '@/libs/auth.lib';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
+import Router from 'next/router';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../components/buttons/button';
 import Input from '../components/inputs/input';
@@ -7,8 +12,6 @@ import Layout from '../components/layout/layout';
 import Seo from '../components/seo/seo';
 import AuthFooter from '../features/auth/auth-footer';
 import AuthHeader from '../features/auth/auth-header';
-import { useAuth } from '@/contexts/auth/auth.context';
-import { useState } from 'react';
 
 type SignUpInputs = {
   email: string;
@@ -18,11 +21,20 @@ type SignUpInputs = {
 export default function SignUp() {
   const { register, handleSubmit } = useForm<SignUpInputs>();
   const [loading, setLoading] = useState(false);
-  const { signUp } = useAuth();
 
   const onSubmit: SubmitHandler<SignUpInputs> = async ({ email, password }) => {
     setLoading(true);
-    await signUp(email, password);
+    const { data, statusCode } = await signUp(email, password);
+    if (statusCode === HTTP_STATUS.CREATED && data) {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+      if (result?.ok) {
+        Router.replace('/');
+      }
+    }
     setLoading(false);
   };
 

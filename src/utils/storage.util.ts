@@ -1,5 +1,3 @@
-import { CurrentUser } from '@/contexts/auth/auth.context';
-
 const CURRENT_USER_KEY = 'currentUser';
 
 export const StorageUtil = Object.freeze({
@@ -13,6 +11,6 @@ export const StorageUtil = Object.freeze({
       return null;
     }
     const userStr = localStorage.getItem(CURRENT_USER_KEY);
-    return userStr ? (JSON.parse(userStr) as CurrentUser) : null;
+    return userStr ? JSON.parse(userStr) : null;
   },
 });

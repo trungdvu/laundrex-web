@@ -1,4 +1,3 @@
-import { useAuth } from '@/contexts/auth/auth.context';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -11,6 +10,7 @@ import Layout from '../components/layout/layout';
 import Seo from '../components/seo/seo';
 import AuthFooter from '../features/auth/auth-footer';
 import AuthHeader from '../features/auth/auth-header';
+import { signIn } from 'next-auth/react';
 
 type SignInInputs = {
   email: string;
@@ -18,16 +18,20 @@ type SignInInputs = {
   remember?: boolean;
 };
 
-export default function SignIn() {
-  const { register, handleSubmit } = useForm<SignInInputs>({
-    values: { email: 'admin@gmail.com', password: '1234' },
-  });
-  const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+const defaultValues: SignInInputs = {
+  email: 'admin@gmail.com',
+  password: '1234',
+  remember: true,
+};
 
-  const onSubmit: SubmitHandler<SignInInputs> = async ({ email, password }) => {
+export default function SignIn() {
+  const { register, handleSubmit } = useForm<SignInInputs>({ defaultValues });
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit: SubmitHandler<SignInInputs> = async (data) => {
+    const { email, password } = data;
     setLoading(true);
-    const result = await signIn(email, password);
+    await signIn('credentials', { email, password, redirect: false });
     setLoading(false);
   };
 

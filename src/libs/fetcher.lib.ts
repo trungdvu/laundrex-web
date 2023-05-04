@@ -19,9 +19,5 @@ export async function fetcher(path: string, { method, data }: Options) {
     body: method !== 'GET' ? JSON.stringify(data) : undefined,
   });
 
-  if (res.status > 399 && res.status < 200) {
-    throw new Error('Fetcher error');
-  }
-
   return res.json();
 }

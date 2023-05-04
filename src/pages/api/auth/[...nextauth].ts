@@ -1,5 +1,5 @@
-import { HTTP_STATUS } from '@/constants/constant';
 import { signIn } from '@/libs/auth.lib';
+import { getAuthErrorMessage } from '@/utils/auth.util';
 import NextAuth from 'next-auth/next';
 import Credentials from 'next-auth/providers/credentials';
 
@@ -9,7 +9,6 @@ export default NextAuth({
   },
   pages: {
     signIn: '/sign-in',
-    error: '/sign-in',
   },
   providers: [
     Credentials({
@@ -17,19 +16,19 @@ export default NextAuth({
       credentials: {},
       async authorize(credentials: any, _) {
         const { email, password } = credentials;
-
-        if (!email || !password) {
-          throw new Error('email/password missing');
+        try {
+          const { ok, data, errorCode } = await signIn(email, password);
+          if (ok && data) {
+            return data;
+          } else {
+            throw new Error(getAuthErrorMessage(errorCode));
+          }
+        } catch (error) {
+          console.log(error);
+          throw error;
         }
-
-        const { data, statusCode } = await signIn(email, password);
-
-        if (statusCode === HTTP_STATUS.OK && data) {
-          return data;
-        }
-
-        throw new Error('wrong credentials');
       },
     }),
   ],
+  secret: process.env.NEXT_PUBLIC_SECRET,
 });

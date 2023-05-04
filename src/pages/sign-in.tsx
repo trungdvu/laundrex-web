@@ -27,11 +27,23 @@ const defaultValues: SignInInputs = {
 export default function SignIn() {
   const { register, handleSubmit } = useForm<SignInInputs>({ defaultValues });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const onSubmit: SubmitHandler<SignInInputs> = async (data) => {
     const { email, password } = data;
     setLoading(true);
-    await signIn('credentials', { email, password, redirect: false });
+    try {
+      const response = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+      if (!response?.ok) {
+        setError(response?.error ?? '');
+      }
+    } catch (error) {
+      setError('Something went wrong, please try again!');
+    }
     setLoading(false);
   };
 
@@ -64,6 +76,11 @@ export default function SignIn() {
                 {...register('password')}
               />
             </div>
+            {!!error && (
+              <div className="mt-5 border border-orange-700 bg-orange-100 px-4 py-3 text-sm text-orange-700">
+                {error}
+              </div>
+            )}
             <Button className="mt-5 w-full" type="submit" loading={loading}>
               Sign in
             </Button>
@@ -90,7 +107,7 @@ export default function SignIn() {
               </Link>
             </div>
           </form>
-          <div className="bg-gradient-sign-in flex aspect-square w-full flex-col items-center justify-center">
+          <div className="bg-gradient-sign-in flex aspect-square h-min w-full flex-col items-center justify-center">
             <div className="w-min text-3xl font-extrabold">
               <h2 className="text-left">THE</h2>
               <h1 className="text-5xl">LAUNDRY</h1>
@@ -106,12 +123,11 @@ export default function SignIn() {
         </div>
 
         <h6 className="mt-12 text-lg">
-          New to Laundrex?
+          New to Laundrex?{' '}
           <Link
             href="/sign-up"
             className="font-bold text-brand hover:underline"
           >
-            {' '}
             Sign up now
           </Link>
           .

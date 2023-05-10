@@ -10,6 +10,10 @@ export default NextAuth({
   pages: {
     signIn: '/sign-in',
   },
+  secret: process.env.JWT_SECRET,
+  jwt: {
+    maxAge: +(process.env.JWT_EXPIRATION || 7200),
+  },
   providers: [
     Credentials({
       type: 'credentials',
@@ -17,11 +21,11 @@ export default NextAuth({
       async authorize(credentials: any, _) {
         const { email, password } = credentials;
         try {
-          const { ok, data, errorCode } = await signIn(email, password);
-          if (ok && data) {
-            return data;
+          const response = await signIn(email, password);
+          if (response.ok && response.data) {
+            return response.data;
           } else {
-            throw new Error(getAuthErrorMessage(errorCode));
+            throw new Error(getAuthErrorMessage(response.errorCode));
           }
         } catch (error) {
           console.log(error);
@@ -30,5 +34,4 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXT_PUBLIC_SECRET,
 });

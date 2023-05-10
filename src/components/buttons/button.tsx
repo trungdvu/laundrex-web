@@ -19,8 +19,10 @@ export default function Button({
   return (
     <button
       className={cn(
-        'relative bg-black px-8 py-4 text-lg font-bold text-white transition duration-75 hover:transform hover:bg-neutral-800 focus:outline-none active:bg-neutral-700',
+        'relative bg-black px-8 py-4 text-lg font-bold text-white transition duration-75 hover:transform ',
+        { 'hover:bg-neutral-800 focus:outline-none active:bg-neutral-700': !disabled && !loading },
         { 'opacity-70 hover:bg-black active:bg-black': loading },
+        { 'opacity-20 hover:bg-black active:bg-black': disabled },
         className,
       )}
       disabled={disabled || loading}

@@ -4,14 +4,16 @@ import { Loading } from './loading.button';
 
 export type ButtonProps = {
   loading?: boolean;
+  iconLeft?: React.ReactNode;
 } & DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
 
 export default function Button({
-  loading,
   children,
+  iconLeft,
+  loading,
   className,
   disabled,
   ...rest
@@ -19,7 +21,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        'relative bg-black px-8 py-4 text-lg font-bold text-white transition duration-75 hover:transform ',
+        'relative transform bg-black px-8 py-4 text-lg font-bold text-white transition duration-75',
         {
           'hover:bg-neutral-800 focus:outline-none active:bg-neutral-700':
             !disabled && !loading,
@@ -39,7 +41,14 @@ export default function Button({
       >
         <Loading />
       </div>
-      <div className={cn({ 'opacity-0': loading })}>{children}</div>
+      <div
+        className={cn('flex items-center justify-center', {
+          'opacity-0': loading,
+        })}
+      >
+        {iconLeft ? <div className="mr-3">{iconLeft}</div> : null}
+        {children}
+      </div>
     </button>
   );
 }

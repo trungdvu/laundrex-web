@@ -20,7 +20,7 @@ const Input = React.forwardRef<
         'bg-neutral-50',
         'placeholder:font-normal placeholder:text-neutral-400',
         'hover:border-neutral-400 hover:bg-neutral-100',
-        'focus:border-neutral-400 focus:outline-none focus:bg-neutral-100 focus:ring-0',
+        'focus:border-neutral-400 focus:bg-neutral-100 focus:outline-none focus:ring-0',
         'transition duration-75',
         className,
       )}

@@ -22,7 +22,11 @@ type SignUpInputs = {
 };
 
 export default function SignUp() {
-  const { register, handleSubmit, formState: { isDirty, isValid } } = useForm<SignUpInputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, isValid },
+  } = useForm<SignUpInputs>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -39,7 +43,9 @@ export default function SignUp() {
         Router.replace('/');
       }
     } else {
-      const message = Array.isArray(response.message) ? response.message.join(", ") : response.message
+      const message = Array.isArray(response.message)
+        ? response.message.join(', ')
+        : response.message;
       setError(capitalizeFirstLetter(message));
     }
     setLoading(false);
@@ -69,8 +75,8 @@ export default function SignUp() {
           className="mx-auto flex w-96 flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h4 className="text-2xl font-bold">Sign up for Laundrex</h4>
-          <div className="mt-4 flex w-full flex-col">
+          <h4 className="text-2xl font-bold">Sign up</h4>
+          <div className="mt-8 flex w-full flex-col">
             <InputLabel>Email address</InputLabel>
             <Input
               className="mt-2 w-full"
@@ -97,15 +103,13 @@ export default function SignUp() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <span className='truncate'>
-                    {error}
-                  </span>
+                  <span className="truncate">{error}</span>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
           <div
-            className={classNames('transition duration-200 w-full', {
+            className={classNames('w-full transition duration-200', {
               'translate-y-14': !!error,
               'transslate-y-0': !error,
             })}

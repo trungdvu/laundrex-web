@@ -11,4 +11,8 @@
       ),
       #7ea949;
   }
+
+  .btn-icon {
+    @apply flex items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-black;
+  }
 }

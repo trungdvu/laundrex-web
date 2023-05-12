@@ -43,7 +43,7 @@ export default function SignIn() {
         redirect: false,
       });
       if (response?.ok) {
-        Router.replace('/');
+        Router.replace('/dashboard');
       } else {
         setError(capitalizeFirstLetter(response?.error ?? ''));
       }
@@ -59,10 +59,7 @@ export default function SignIn() {
       footer={<AuthFooter className="mx-auto max-w-3xl" />}
     >
       <Seo />
-      <motion.main
-        className="mx-auto max-w-3xl"
-        {...pageMotion}
-      >
+      <motion.main className="mx-auto max-w-3xl" {...pageMotion}>
         <div className="flex w-full gap-8">
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <h4 className="text-xl font-bold">Sign in</h4>
@@ -92,10 +89,7 @@ export default function SignIn() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className='truncate'>
-                      {error}
-                    </span>
-
+                    <span className="truncate">{error}</span>
                   </motion.div>
                 )}
               </AnimatePresence>

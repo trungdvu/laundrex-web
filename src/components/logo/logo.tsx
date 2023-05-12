@@ -16,7 +16,7 @@ export default function Logo({
   height = 64,
   className,
   style,
-  src = '/laundrex',
+  src = '/laundrex.svg',
   alt = 'laundrex logo',
 }: LogoProps) {
   return (

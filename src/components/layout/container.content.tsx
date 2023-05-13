@@ -1,5 +1,6 @@
 import { UilBars } from '@iconscout/react-unicons';
 import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
 
 type ContainerContentProps = {
   children?: any;
@@ -81,7 +82,10 @@ function Header({ title, sidebarVisible, onOpenSidebar }: HeaderProps) {
             <span className="font-medium">Trung Vu</span>
             <span className="text-sm">Adminstrator</span>
           </div>
-          <div className="h-10 w-10 bg-neutral-100 text-sm"></div>
+          <Link
+            className="h-10 w-10 bg-neutral-100 text-sm"
+            href={'/profile'}
+          />
         </div>
       </div>
     </div>

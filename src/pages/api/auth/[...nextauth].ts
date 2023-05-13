@@ -20,7 +20,6 @@ export default NextAuth({
       credentials: {},
       async authorize(credentials: any, _) {
         const { email, password } = credentials;
-        // return credentials;
         try {
           const response = await signIn(email, password);
           if (response.ok && response.data) {

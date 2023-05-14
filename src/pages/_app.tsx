@@ -1,12 +1,8 @@
 import '@/styles/globals.css';
-import { sans } from '@/configs/fonts.config';
-import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
+import { sans } from '../configs/fonts';
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <style jsx global>
@@ -16,9 +12,7 @@ export default function App({
           }
         `}
       </style>
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <Component {...pageProps} />
     </>
   );
 }

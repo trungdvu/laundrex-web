@@ -1,9 +1,8 @@
 import { signUp } from '@/libs/auth.lib';
-import { capitalizeFirstLetter } from '@/utils/helper.util';
+import { capitalizeFirstLetter } from '@/utils/common.util';
 import { pageMotion } from '@/utils/motion.util';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
@@ -34,14 +33,6 @@ export default function SignUp() {
     setLoading(true);
     const response = await signUp(email, password);
     if (response.ok && response.data) {
-      const result = await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-      });
-      if (result?.ok) {
-        Router.replace('/');
-      }
     } else {
       const message = Array.isArray(response.message)
         ? response.message.join(', ')

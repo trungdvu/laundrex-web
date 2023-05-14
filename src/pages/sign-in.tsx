@@ -1,8 +1,6 @@
-import { capitalizeFirstLetter } from '@/utils/helper.util';
 import { pageMotion } from '@/utils/motion.util';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -37,19 +35,7 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<SignInInputs> = async ({ email, password }) => {
     setLoading(true);
     try {
-      const response = await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-      });
-      if (response?.ok) {
-        Router.replace('/dashboard');
-      } else {
-        setError(capitalizeFirstLetter(response?.error ?? ''));
-      }
-    } catch (error) {
-      setError('Something went wrong, please try again!');
-    }
+    } catch (error) {}
     setLoading(false);
   };
 

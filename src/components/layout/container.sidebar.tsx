@@ -5,7 +5,6 @@ import {
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
-import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Logo from '../logo/logo';
@@ -31,7 +30,7 @@ export default function Sidebar({ visible, onClose }: SidebarProps) {
         <Menu />
         <button
           className="flex items-center px-10 py-4 transition focus:text-brand focus:underline"
-          onClick={() => signOut()}
+          onClick={() => {}}
         >
           <UilSignOutAlt size={26} />
           <span className="ml-3 font-medium">Sign out</span>

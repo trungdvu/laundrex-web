@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { Loading } from './loading.button';
+import { Loading } from './loading';
 
 export type ButtonProps = {
   loading?: boolean;

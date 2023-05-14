@@ -4,9 +4,17 @@ import InputLabel from '@/components/inputs/input-label';
 import Layout from '@/components/layout/layout';
 import { RequireAuth } from '@/components/layout/require-auth';
 import Seo from '@/components/seo/seo';
+import clientAxios from '@/libs/client-axios';
+import { pageMotion } from '@/utils/motion.util';
+import { motion } from 'framer-motion';
+import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 
-export default function Profile() {
+type ProfileProps = {
+  user: any;
+};
+
+export default function Profile({ user }: ProfileProps) {
   const router = useRouter();
 
   const onGoBack = () => {
@@ -17,7 +25,7 @@ export default function Profile() {
     <RequireAuth>
       <Layout footer={null}>
         <Seo />
-        <main className="mx-auto max-w-3xl">
+        <motion.main className="mx-auto max-w-3xl" {...pageMotion}>
           <button className="mt-5 text-brand" onClick={onGoBack}>
             Go back
           </button>
@@ -30,6 +38,7 @@ export default function Profile() {
                   className="mt-2 w-full"
                   placeholder="Your display name"
                   type="text"
+                  value={user.name}
                 />
               </div>
               <div className="relative mt-4 flex w-full flex-col">
@@ -38,6 +47,7 @@ export default function Profile() {
                   className="mt-2 w-full"
                   placeholder="username@example.com"
                   type="email"
+                  value={user.email}
                 />
                 <button className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-neutral-500">
                   Modify
@@ -46,7 +56,11 @@ export default function Profile() {
 
               <div className="relative mt-4 flex w-full flex-col">
                 <InputLabel>Role</InputLabel>
-                <Input className="mt-2 w-full" type="text" />
+                <Input
+                  className="mt-2 w-full"
+                  type="text"
+                  value={user.role?.name}
+                />
                 <span className="mt-2 text-neutral-500">
                   You can’t change your role
                 </span>
@@ -65,8 +79,23 @@ export default function Profile() {
               <div className="mt-2 h-48 w-48 rounded-full bg-amber-100" />
             </div>
           </div>
-        </main>
+        </motion.main>
       </Layout>
     </RequireAuth>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { req } = context;
+  const response = await clientAxios.get(`/auth/me`, {
+    headers: {
+      Cookie: req.headers.cookie,
+    },
+  });
+
+  return {
+    props: {
+      user: response.data.data,
+    },
+  };
 }

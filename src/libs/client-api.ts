@@ -1,7 +1,8 @@
+import { API_BASE } from '@/constants/constants';
 import axios from 'axios';
 
-const clientAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_LAUNDREX_API,
+const clientApi = axios.create({
+  baseURL: API_BASE,
   withCredentials: true,
   headers: {
     Accept: 'application/json',
@@ -9,4 +10,4 @@ const clientAxios = axios.create({
   },
 });
 
-export default clientAxios;
+export default clientApi;

@@ -6,7 +6,7 @@ export type InputLabelProps = {} & DetailedHTMLProps<
   HTMLLabelElement
 >;
 
-export default function InputLabel({
+export default function Label({
   children,
   className,
   ...rest

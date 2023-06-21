@@ -1,16 +1,15 @@
-import { pageMotion } from '@/utils/motion.util';
+import { pageMotion } from '@/utils/motion';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import Router from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import doodle14 from '../../public/highlights/doodle-14.svg';
 import Button from '../components/buttons/button';
 import Input from '../components/inputs/input';
-import InputLabel from '../components/inputs/input-label';
-import Layout from '../components/layout/layout';
+import Label from '../components/inputs/label';
+import Layout from '../components/layouts/layout';
 import Seo from '../components/seo/seo';
 import AuthFooter from '../features/auth/auth-footer';
 import AuthHeader from '../features/auth/auth-header';
@@ -50,7 +49,7 @@ export default function SignIn() {
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <h4 className="text-xl font-bold">Sign in</h4>
             <div className="mt-4 flex flex-col">
-              <InputLabel>Email address</InputLabel>
+              <Label>Email address</Label>
               <Input
                 className="mt-2 w-full"
                 placeholder="username@example.com"
@@ -59,7 +58,7 @@ export default function SignIn() {
               />
             </div>
             <div className="relative mt-4 flex flex-col">
-              <InputLabel>Password</InputLabel>
+              <Label>Password</Label>
               <Input
                 className="mt-2 w-full"
                 placeholder="Enter your password"

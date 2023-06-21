@@ -1,10 +1,9 @@
 import Button from '@/components/buttons/button';
 import Input from '@/components/inputs/input';
-import InputLabel from '@/components/inputs/input-label';
-import Layout from '@/components/layout/layout';
+import Label from '@/components/inputs/label';
+import Layout from '@/components/layouts/layout';
 import Seo from '@/components/seo/seo';
-import clientAxios from '@/libs/client-axios';
-import { pageMotion } from '@/utils/motion.util';
+import { pageMotion } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
@@ -35,7 +34,7 @@ export default function Profile({ user }: ProfileProps) {
         <div className="flex justify-between gap-4">
           <div className="w-7/12">
             <div className="relative mt-4 flex w-full flex-col">
-              <InputLabel>Name</InputLabel>
+              <Label>Name</Label>
               <Input
                 className="mt-2 w-full"
                 placeholder="Your display name"
@@ -44,7 +43,7 @@ export default function Profile({ user }: ProfileProps) {
               />
             </div>
             <div className="relative mt-4 flex w-full flex-col">
-              <InputLabel>Email address</InputLabel>
+              <Label>Email address</Label>
               <Input
                 className="mt-2 w-full"
                 placeholder="username@example.com"
@@ -57,7 +56,7 @@ export default function Profile({ user }: ProfileProps) {
             </div>
 
             <div className="relative mt-4 flex w-full flex-col">
-              <InputLabel>Role</InputLabel>
+              <Label>Role</Label>
               <Input
                 className="mt-2 w-full"
                 type="text"
@@ -68,7 +67,7 @@ export default function Profile({ user }: ProfileProps) {
               </span>
             </div>
             <div className="relative mt-4 flex w-full flex-col">
-              <InputLabel>Phone</InputLabel>
+              <Label>Phone</Label>
               <Input className="mt-2 w-full" type="tel" />
               <span className="mt-2 text-neutral-500">
                 To enable 2 factor authentication via text message
@@ -77,7 +76,7 @@ export default function Profile({ user }: ProfileProps) {
             <Button className="mt-8 w-full">Update</Button>
           </div>
           <div>
-            <InputLabel className="text-base">Profile picture</InputLabel>
+            <Label className="text-base">Profile picture</Label>
             <div className="mt-2 h-48 w-48 rounded-full bg-amber-100" />
           </div>
         </div>

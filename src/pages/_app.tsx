@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { sans } from '../configs/fonts';
+import { sans } from '../configs/typography';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

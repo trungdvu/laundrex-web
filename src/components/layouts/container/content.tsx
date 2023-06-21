@@ -9,7 +9,7 @@ type ContainerContentProps = {
   onOpenSidebar: () => void;
 };
 
-export default function ContainerContent({
+export default function Content({
   children,
   title,
   sidebarVisible,

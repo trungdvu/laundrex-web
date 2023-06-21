@@ -1,4 +1,4 @@
-import Container from '@/components/layout/container';
+import Container from '@/components/layouts/container/container';
 import Seo from '@/components/seo/seo';
 
 export default function Home() {

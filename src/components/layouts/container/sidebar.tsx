@@ -1,14 +1,10 @@
-import {
-  UilMultiply,
-  UilSignOutAlt,
-  UilAngleDoubleLeft,
-} from '@iconscout/react-unicons';
+import { UilAngleDoubleLeft, UilSignOutAlt } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Logo from '../logo/logo';
-import { SIDEBAR_MENU_ITEMS } from './container.config';
+import Logo from '../../logo';
+import { SIDEBAR_MENU_ITEMS } from './sidebar.config';
 
 type SidebarProps = {
   visible: boolean;

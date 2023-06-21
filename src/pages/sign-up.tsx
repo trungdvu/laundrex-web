@@ -1,16 +1,13 @@
-import { signUp } from '@/libs/auth.lib';
-import { capitalizeFirstLetter } from '@/utils/common.util';
-import { pageMotion } from '@/utils/motion.util';
+import { pageMotion } from '@/utils/motion';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
-import Router from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../components/buttons/button';
 import Input from '../components/inputs/input';
-import InputLabel from '../components/inputs/input-label';
-import Layout from '../components/layout/layout';
+import Label from '../components/inputs/label';
+import Layout from '../components/layouts/layout';
 import Seo from '../components/seo/seo';
 import AuthFooter from '../features/auth/auth-footer';
 import AuthHeader from '../features/auth/auth-header';
@@ -31,14 +28,6 @@ export default function SignUp() {
 
   const onSubmit: SubmitHandler<SignUpInputs> = async ({ email, password }) => {
     setLoading(true);
-    const response = await signUp(email, password);
-    if (response.ok && response.data) {
-    } else {
-      const message = Array.isArray(response.message)
-        ? response.message.join(', ')
-        : response.message;
-      setError(capitalizeFirstLetter(message));
-    }
     setLoading(false);
   };
 
@@ -68,7 +57,7 @@ export default function SignUp() {
         >
           <h4 className="text-2xl font-bold">Sign up</h4>
           <div className="mt-8 flex w-full flex-col">
-            <InputLabel>Email address</InputLabel>
+            <Label>Email address</Label>
             <Input
               className="mt-2 w-full"
               placeholder="username@example.com"
@@ -78,7 +67,7 @@ export default function SignUp() {
             />
           </div>
           <div className="relative mt-4 flex w-full flex-col">
-            <InputLabel>Password</InputLabel>
+            <Label>Password</Label>
             <Input
               className="mt-2 w-full"
               placeholder="Enter your password"

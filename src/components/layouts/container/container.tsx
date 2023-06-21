@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ContainerContent from './container.content';
-import Sidebar from './container.sidebar';
+import Content from './content';
+import Sidebar from './sidebar';
 
 type ContainerProps = {
   title?: string;
@@ -16,13 +16,13 @@ export default function Container({ title = '', children }: ContainerProps) {
         visible={sidebarVisible}
         onClose={() => setSidebarVisible(false)}
       />
-      <ContainerContent
+      <Content
         title={title}
         sidebarVisible={sidebarVisible}
         onOpenSidebar={() => setSidebarVisible(true)}
       >
         {children}
-      </ContainerContent>
+      </Content>
     </div>
   );
 }

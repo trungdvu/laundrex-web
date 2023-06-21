@@ -1,8 +1,4 @@
-type LoadingProps = {
-  className?: string;
-};
-
-export function Loading({ className }: LoadingProps) {
+export function Loading() {
   return (
     <svg
       className="h-8 w-8 animate-spin fill-brand"

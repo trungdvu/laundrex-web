@@ -1,8 +1,12 @@
+import authService from '@/libs/auth-service';
 import { pageMotion } from '@/utils/motion';
+import { ErrorData } from '@/utils/types';
+import { capitalizeFirstLetter } from '@/utils/utils';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import doodle14 from '../../public/highlights/doodle-14.svg';
@@ -30,12 +34,21 @@ export default function SignIn() {
   const { register, handleSubmit } = useForm<SignInInputs>({ defaultValues });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<SignInInputs> = async ({ email, password }) => {
-    setLoading(true);
     try {
-    } catch (error) {}
-    setLoading(false);
+      setLoading(true);
+      const response = await authService.signIn(email, password);
+      setLoading(false);
+      if (response.ok) {
+        router.replace('/dashboard');
+      } else {
+        setError((response.data as ErrorData).message);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,7 +87,9 @@ export default function SignIn() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className="truncate">{error}</span>
+                    <span className="truncate">
+                      {capitalizeFirstLetter(error)}
+                    </span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -105,7 +120,7 @@ export default function SignIn() {
                 </div>
                 <Link
                   className="text-sm text-neutral-400 hover:underline"
-                  href="#help"
+                  href="/help"
                 >
                   Need help?
                 </Link>

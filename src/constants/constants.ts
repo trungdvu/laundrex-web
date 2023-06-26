@@ -1,5 +1,5 @@
 export const API_BASE = process.env.NEXT_PUBLIC_LAUNDREX_API;
-export const NODE_ENV = process.env.NODE_ENV;
+export const NODE_ENV = process.env.ENVIRONMENT;
 export const AUTH_EXPIRATION = process.env.AUTHENTICATION_EXPIRATION;
 
 export const HTTP_STATUS = {

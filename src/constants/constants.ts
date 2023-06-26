@@ -1,4 +1,6 @@
 export const API_BASE = process.env.NEXT_PUBLIC_LAUNDREX_API;
+export const NODE_ENV = process.env.NODE_ENV;
+export const AUTH_EXPIRATION = process.env.AUTHENTICATION_EXPIRATION;
 
 export const HTTP_STATUS = {
   CONTINUE: 100,
@@ -49,4 +51,8 @@ export const HTTP_STATUS = {
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
   HTTP_VERSION_NOT_SUPPORTED: 505,
+};
+
+export const COOKIE_KEY = {
+  AUTH: 'Authentication',
 };

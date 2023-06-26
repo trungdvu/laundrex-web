@@ -38,6 +38,7 @@ export default function Profile({ user }: ProfileProps) {
               <Label>Name</Label>
               <Input
                 className="mt-2 w-full"
+                readOnly
                 placeholder="Your display name"
                 type="text"
                 value={user.name}
@@ -47,6 +48,7 @@ export default function Profile({ user }: ProfileProps) {
               <Label>Email address</Label>
               <Input
                 className="mt-2 w-full"
+                readOnly
                 placeholder="username@example.com"
                 type="email"
                 value={user.email}
@@ -59,6 +61,7 @@ export default function Profile({ user }: ProfileProps) {
             <div className="relative mt-4 flex w-full flex-col">
               <Label>Role</Label>
               <Input
+                readOnly
                 className="mt-2 w-full"
                 type="text"
                 value={user.role?.name}
@@ -69,7 +72,7 @@ export default function Profile({ user }: ProfileProps) {
             </div>
             <div className="relative mt-4 flex w-full flex-col">
               <Label>Phone</Label>
-              <Input className="mt-2 w-full" type="tel" />
+              <Input className="mt-2 w-full" readOnly type="tel" />
               <span className="mt-2 text-neutral-500">
                 To enable 2 factor authentication via text message
               </span>
@@ -78,7 +81,7 @@ export default function Profile({ user }: ProfileProps) {
           </div>
           <div>
             <Label className="text-base">Profile picture</Label>
-            <div className="mt-2 h-48 w-48 rounded-full bg-amber-100" />
+            <div className="mt-2 h-48 w-48 rounded-full bg-neutral-100" />
           </div>
         </div>
       </motion.main>

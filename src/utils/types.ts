@@ -1,7 +1,7 @@
 export type ApiResponse = {
   statusCode: number;
   ok: boolean;
-  data: unknown;
+  data: any;
 };
 
 export type ErrorData = {

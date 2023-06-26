@@ -1,4 +1,3 @@
-import authService from '@/libs/auth-service';
 import { pageMotion } from '@/utils/motion';
 import { ErrorData } from '@/utils/types';
 import { capitalizeFirstLetter } from '@/utils/utils';
@@ -39,8 +38,25 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<SignInInputs> = async ({ email, password }) => {
     try {
       setLoading(true);
-      const response = await authService.signIn(email, password);
+
+      const response = await fetch(`${window.location.origin}/api/sign-in`, {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .catch((error) => {
+          throw new Error('Fetch error');
+        });
+
       setLoading(false);
+
       if (response.ok) {
         router.replace('/dashboard');
       } else {

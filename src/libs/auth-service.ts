@@ -19,8 +19,8 @@ const authService = Object.freeze({
     return laundrexApi.post('/auth/sign-out');
   },
 
-  async getMe(headerOptions: any) {
-    return laundrexApi.get('/auth/me', headerOptions);
+  async getMe() {
+    return laundrexApi.get('/auth/me');
   },
 });
 

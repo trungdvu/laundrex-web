@@ -4,6 +4,7 @@ import Label from '@/components/inputs/label';
 import Layout from '@/components/layouts/layout';
 import Seo from '@/components/seo/seo';
 import authService from '@/libs/auth-service';
+import { withLaundrexApi } from '@/libs/laundrex-api';
 import { pageMotion } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { GetServerSidePropsContext } from 'next';
@@ -89,12 +90,12 @@ export default function Profile({ user }: ProfileProps) {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { data: user } = await authService.getMe({
-    Cookie: context.req.headers.cookie,
-  });
+export const getServerSideProps = withLaundrexApi(
+  async (context: GetServerSidePropsContext) => {
+    const { data: user } = await authService.getMe();
 
-  return {
-    props: { user },
-  };
-}
+    return {
+      props: { user },
+    };
+  },
+);

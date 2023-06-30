@@ -15,4 +15,10 @@
   .btn-icon {
     @apply flex items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-black;
   }
+
+  .auto-complete-input:-webkit-autofill:hover,
+  .auto-complete-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }

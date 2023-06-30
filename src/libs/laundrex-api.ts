@@ -13,17 +13,6 @@ const axiosInstance = axios.create({
   },
 });
 
-async function handleResponseError(error: AxiosError) {
-  if (error.response) {
-    return error.response;
-  } else {
-    return {
-      timestamp: new Date().toISOString(),
-      message: 'Unknown error',
-    } as ErrorData;
-  }
-}
-
 async function send(method: Method, path: string, body?: any) {
   try {
     const res = await axiosInstance({
@@ -34,7 +23,7 @@ async function send(method: Method, path: string, body?: any) {
 
     return res.data;
   } catch (error: any) {
-    return handleResponseError(error);
+    throw new Error('internal server error');
   }
 }
 

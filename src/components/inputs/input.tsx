@@ -14,6 +14,7 @@ const Input = React.forwardRef<
     <input
       {...rest}
       className={cn(
+        'auto-complete-input',
         'w-80 p-4',
         'text-lg',
         'border border-neutral-200',

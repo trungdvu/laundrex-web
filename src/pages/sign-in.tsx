@@ -125,7 +125,7 @@ export default function SignIn() {
                     className="h-4 w-4 cursor-pointer rounded-none border-2 border-neutral-400 bg-neutral-50 text-neutral-400 focus:outline-none focus:ring-0 "
                     id="remember"
                     type="checkbox"
-                    {...register('email')}
+                    {...register('remember')}
                   />
                   <label
                     className="ml-2 cursor-pointer text-sm text-neutral-400"

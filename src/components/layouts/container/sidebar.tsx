@@ -46,12 +46,12 @@ function Header({
       <h3 className="ml-3 text-lg font-extrabold text-black">Laundrex</h3>
       <button
         className={cn(
-          'btn-icon invisible absolute bottom-0 right-5 top-1/2 z-10 h-8 w-8 -translate-y-1/2 transform  text-lg transition group-hover:visible',
+          'btn-icon invisible absolute bottom-0 right-5 top-1/2 z-10 h-10 w-10 -translate-y-1/2 transform  text-lg transition group-hover:visible',
           { 'translate-x-0': !visible },
         )}
         onClick={onClose}
       >
-        <UilAngleDoubleLeft size={28} />
+        <UilAngleDoubleLeft size={32} />
       </button>
     </div>
   );

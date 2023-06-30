@@ -1,7 +1,7 @@
 export function Loading() {
   return (
     <svg
-      className="h-8 w-8 animate-spin fill-brand"
+      className="h-8 w-8 animate-spin-fast fill-brand"
       aria-hidden="true"
       viewBox="0 0 100 101"
       fill="none"

@@ -8,7 +8,7 @@ export default function Dashboard() {
   return (
     <Container title="Dashboard">
       <Seo />
-      <main className="grid grid-cols-12 gap-5 px-5">
+      <main className="grid grid-cols-12 gap-5 pl-5 pr-10">
         <div className="col-span-8 flex flex-col gap-5">
           <TotalCards />
           <RecentBookings />

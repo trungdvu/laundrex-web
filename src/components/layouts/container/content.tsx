@@ -40,7 +40,7 @@ type HeaderProps = Pick<
 
 function Header({ title, sidebarVisible, onOpenSidebar }: HeaderProps) {
   return (
-    <div className="relative flex h-20 w-full items-center px-5">
+    <div className="relative flex h-20 w-full items-center pl-5 pr-10">
       <AnimatePresence initial={false} mode="sync">
         {!sidebarVisible ? (
           <motion.button

@@ -28,7 +28,7 @@ export default function Profile({ user }: ProfileProps) {
   return (
     <Layout footer={null}>
       <Seo />
-      <motion.main className="mx-auto max-w-3xl" {...pageMotion}>
+      <motion.main className="mx-auto max-w-4xl" {...pageMotion}>
         <button className="mt-5 text-brand" onClick={onGoBack}>
           Go back
         </button>
@@ -54,7 +54,7 @@ export default function Profile({ user }: ProfileProps) {
                 type="email"
                 value={user.email}
               />
-              <button className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-neutral-500">
+              <button className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-sm text-neutral-500 transition duration-75 hover:text-black">
                 Modify
               </button>
             </div>
@@ -75,12 +75,12 @@ export default function Profile({ user }: ProfileProps) {
               <Label>Phone</Label>
               <Input className="mt-2 w-full" readOnly type="tel" />
               <span className="mt-2 text-neutral-500">
-                To enable 2 factor authentication via text message
+                To enable 2 factor authentication via SMS
               </span>
             </div>
             <Button className="mt-8 w-full">Update</Button>
           </div>
-          <div>
+          <div className="mt-4">
             <Label className="text-base">Profile picture</Label>
             <div className="mt-2 h-48 w-48 rounded-full bg-neutral-100" />
           </div>
@@ -90,12 +90,10 @@ export default function Profile({ user }: ProfileProps) {
   );
 }
 
-export const getServerSideProps = withLaundrexApi(
-  async (context: GetServerSidePropsContext) => {
-    const { data: user } = await authService.getMe();
+export const getServerSideProps = withLaundrexApi(async () => {
+  const { data: user } = await authService.getMe();
 
-    return {
-      props: { user },
-    };
-  },
-);
+  return {
+    props: { user },
+  };
+});

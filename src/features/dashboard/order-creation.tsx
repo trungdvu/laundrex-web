@@ -5,7 +5,7 @@ export default function OrderCreation() {
   return (
     <div className="bg-brand p-8">
       <Button className="min-h-fit w-full" iconLeft={<UilPlus />}>
-        <span>Create a order</span>
+        <span>Create a booking</span>
       </Button>
     </div>
   );

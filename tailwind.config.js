@@ -16,6 +16,9 @@ module.exports = {
       colors: {
         brand: '#7EA949',
       },
+      animation: {
+        'spin-fast': 'spin 0.5s linear infinite',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('autoprefixer')],

@@ -1,8 +1,12 @@
+import SigninOutModal from '@/components/loadings/signing-out-modal';
+import { fetcher } from '@/libs/fetcher';
+import { sleep } from '@/utils/utils';
 import { UilAngleDoubleLeft, UilSignOutAlt } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { memo, useState } from 'react';
 import Logo from '../../logo';
 import { SIDEBAR_MENU_ITEMS } from './sidebar.config';
 
@@ -11,9 +15,28 @@ type SidebarProps = {
   onClose: () => void;
 };
 
-export default function Sidebar({ visible, onClose }: SidebarProps) {
+function Sidebar({ visible, onClose }: SidebarProps) {
+  const [signingOut, setSigningOut] = useState(false);
+
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    try {
+      setSigningOut(true);
+      await sleep(500);
+      const res = await fetcher('sign-out');
+      setSigningOut(false);
+      if (res.ok) {
+        router.replace('/sign-in');
+      }
+    } catch (error) {
+      setSigningOut(false);
+    }
+  };
+
   return (
     <aside className="group flex h-screen text-neutral-500">
+      <SigninOutModal show={signingOut} />
       <motion.div
         className="relative flex w-72 flex-1 flex-col border-r"
         animate={{
@@ -26,7 +49,7 @@ export default function Sidebar({ visible, onClose }: SidebarProps) {
         <Menu />
         <button
           className="flex items-center px-10 py-4 transition focus:text-brand focus:underline"
-          onClick={() => {}}
+          onClick={handleSignOut}
         >
           <UilSignOutAlt size={26} />
           <span className="ml-3 font-medium">Sign out</span>
@@ -78,3 +101,5 @@ function Menu() {
     </div>
   );
 }
+
+export default memo(Sidebar);

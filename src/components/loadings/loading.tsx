@@ -1,7 +1,12 @@
-export function Loading() {
+import classNames from 'classnames';
+
+export function Loading({ className }: { className?: string }) {
   return (
     <svg
-      className="h-8 w-8 animate-spin-fast fill-brand"
+      className={classNames(
+        'h-8 w-8 animate-spin-fast fill-brand text-inherit',
+        className,
+      )}
       aria-hidden="true"
       viewBox="0 0 100 101"
       fill="none"

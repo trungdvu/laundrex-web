@@ -56,3 +56,5 @@ export const HTTP_STATUS = {
 export const COOKIE_KEY = {
   AUTH: 'Authentication',
 };
+
+export const S3_BUCKET_HOST = 'https://laundrex-assets.s3.amazonaws.com';

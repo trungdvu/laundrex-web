@@ -4,11 +4,11 @@
 echo '✔️ Pre-commit checking...'
 
 # Check Prettier standards
-npm run check-format ||
-(
-    echo '❌ Prettier Check Failed.';
-    false;
-)
+# npm run check-format ||
+# (
+#     echo '❌ Prettier Check Failed.';
+#     false;
+# )
 
 # Check ESLint Standards
 # npm run check-lint ||

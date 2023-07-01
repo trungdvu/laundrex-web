@@ -19,6 +19,9 @@ module.exports = {
       animation: {
         'spin-fast': 'spin 0.5s linear infinite',
       },
+      transitionDuration: {
+        fast: '75ms',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('autoprefixer')],

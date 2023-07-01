@@ -65,8 +65,10 @@ function Header({
 }: Pick<SidebarProps, 'visible' | 'onClose'>) {
   return (
     <div className="relative flex h-20 w-full items-center border-b px-10 py-4">
-      <Logo height={28} width={28} />
-      <h3 className="ml-3 text-lg font-extrabold text-black">Laundrex</h3>
+      <div className="flex cursor-pointer items-center">
+        <Logo height={28} width={28} />
+        <h3 className="ml-3 text-lg font-extrabold text-black">Laundrex</h3>
+      </div>
       <button
         className={cn(
           'btn-icon invisible absolute bottom-0 right-5 top-1/2 z-10 h-10 w-10 -translate-y-1/2 transform  text-lg transition group-hover:visible',

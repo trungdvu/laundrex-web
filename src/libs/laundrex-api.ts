@@ -1,6 +1,8 @@
-import { API_BASE } from '@/constants/constants';
-import { ApiResponse, ErrorData } from '@/utils/types';
-import axios, { AxiosError } from 'axios';
+import { API_BASE, COOKIE_KEY } from '@/constants/constants';
+import { ApiResponse } from '@/utils/types';
+import axios from 'axios';
+import cookie from 'cookie';
+import Cookies from 'js-cookie';
 import { GetServerSidePropsContext } from 'next';
 
 type Method = 'GET' | 'DELETE' | 'POST' | 'PUT';
@@ -13,17 +15,44 @@ const axiosInstance = axios.create({
   },
 });
 
+async function injectAccessToken(token: string) {
+  axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
 async function send(method: Method, path: string, body?: any) {
   try {
-    const res = await axiosInstance({
-      method,
-      url: endPoint(path),
-      data: body,
-    });
+    let res: ApiResponse;
+
+    if (typeof window === 'undefined') {
+      // fetch on next server. include token via req headers
+      res = await axiosInstance({
+        method,
+        url: endPoint(path),
+        data: body,
+      });
+    } else {
+      // fetch on browser. include token into req header
+      const accessToken = Cookies.get(COOKIE_KEY.AUTH);
+
+      if (!accessToken) {
+        throw new Error('Unauthorized');
+      }
+
+      injectAccessToken(accessToken);
+
+      res = await axiosInstance({
+        method,
+        url: endPoint(path),
+        data: body,
+        headers: {
+          Authorization: accessToken ? `Bearer ${accessToken}` : undefined,
+        },
+      });
+    }
 
     return res.data;
   } catch (error: any) {
-    throw new Error('internal server error');
+    throw new Error('Internal server error');
   }
 }
 
@@ -49,16 +78,20 @@ const laundrexApi = Object.freeze({
   },
 });
 
-export async function setLaundrexAxiosCookie(cookies: string) {
-  axiosInstance.defaults.headers.common.Cookie = cookies;
-}
-
 export function withLaundrexApi(
   getServerSidePropsFunc?: (context: GetServerSidePropsContext) => Promise<any>,
 ) {
   return async (context: GetServerSidePropsContext) => {
-    const cookies = context.req.headers.cookie;
-    cookies && setLaundrexAxiosCookie(cookies);
+    const accessToken = cookie.parse(context.req.headers.cookie || '')[
+      COOKIE_KEY.AUTH
+    ];
+
+    if (!accessToken) {
+      throw new Error('Unauthorized');
+    }
+
+    injectAccessToken(accessToken);
+
     return getServerSidePropsFunc?.(context);
   };
 }

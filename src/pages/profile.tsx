@@ -43,17 +43,23 @@ export default function Profile({ user: initialUser }: ProfileProps) {
       if (!file) return;
 
       setAvatarFileUploading(true);
-      const res = await fileUploadService.getPresignedUrl(file.name);
-      if (res.ok) {
+
+      const response = await fileUploadService.getPresignedUrl(file.name);
+
+      if (response.ok) {
         const {
           data: { url, key },
-        } = res;
+        } = response;
+
         await fileUploadService.upload(url, file);
-        const updatedMeRes = await userService.updateMe({ avatar: key });
-        if (updatedMeRes.ok) {
-          setUser(updatedMeRes.data);
+
+        const updatedMeResponse = await userService.updateMe({ avatar: key });
+
+        if (updatedMeResponse.ok) {
+          setUser(updatedMeResponse.data);
         }
       }
+
       setAvatarFileUploading(false);
     } catch (error) {
       setAvatarFileUploading(false);
@@ -64,10 +70,6 @@ export default function Profile({ user: initialUser }: ProfileProps) {
   const handleOpenAvatarFilePicker = () => {
     avatarFileInputRef.current?.click();
   };
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <Layout footer={null}>
@@ -132,15 +134,17 @@ export default function Profile({ user: initialUser }: ProfileProps) {
             />
             <Label className="text-base">Profile picture</Label>
             <div className="relative mt-2 h-48 w-48 overflow-hidden rounded-full bg-neutral-100">
-              <Image
-                className="h-full w-full bg-cover"
-                priority
-                src={getImageUrl(user.avatar)}
-                width="0"
-                height="0"
-                sizes="100vw"
-                alt="profile avatar"
-              />
+              {user.avatar && (
+                <Image
+                  className="h-full w-full bg-cover"
+                  priority
+                  src={getImageUrl(user.avatar)}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  alt="profile avatar"
+                />
+              )}
               <button
                 disabled={avatarFileUploading}
                 className={classNames(
@@ -162,9 +166,17 @@ export default function Profile({ user: initialUser }: ProfileProps) {
 }
 
 export const getServerSideProps = withLaundrexApi(async () => {
-  const { data: user } = await authService.getMe();
-
-  return {
-    props: { user },
-  };
+  try {
+    const { data } = await authService.getMe();
+    return {
+      props: { user: data },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: true,
+        destination: '/sign-in',
+      },
+    };
+  }
 });

@@ -15,7 +15,7 @@ export default async function signIn(
       res.setHeader(
         'Set-Cookie',
         cookie.serialize(COOKIE_KEY.AUTH, signInRes.data.accessToken, {
-          httpOnly: true,
+          httpOnly: false,
           maxAge: +(AUTH_EXPIRATION || 3600),
           path: '/',
           sameSite: 'lax',

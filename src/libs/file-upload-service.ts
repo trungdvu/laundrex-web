@@ -13,6 +13,10 @@ const fileUploadService = Object.freeze({
       },
     });
   },
+
+  async delete(key: string) {
+    return laundrexApi.post(`/file-uploads/cleaning`, { key });
+  },
 });
 
 export default fileUploadService;

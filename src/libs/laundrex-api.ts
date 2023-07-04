@@ -52,6 +52,7 @@ async function send(method: Method, path: string, body?: any) {
 
     return res.data;
   } catch (error: any) {
+    console.log('🚀 ~ send ~ error:', error);
     throw new Error('Internal server error');
   }
 }

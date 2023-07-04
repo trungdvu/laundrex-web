@@ -77,7 +77,7 @@ function Header({ title, sidebarVisible, onOpenSidebar }: HeaderProps) {
         >
           {title}
         </motion.h2>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <div className="flex flex-col items-end justify-center">
             <span className="font-medium">Trung Vu</span>
             <span className="text-sm">Adminstrator</span>

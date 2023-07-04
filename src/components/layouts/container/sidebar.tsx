@@ -1,4 +1,4 @@
-import SigninOutModal from '@/components/loadings/signing-out-modal';
+import SignOutModal from '@/components/loadings/signing-out-modal';
 import { fetcher } from '@/libs/fetcher';
 import { sleep } from '@/utils/utils';
 import { UilAngleDoubleLeft, UilSignOutAlt } from '@iconscout/react-unicons';
@@ -36,7 +36,7 @@ function Sidebar({ visible, onClose }: SidebarProps) {
 
   return (
     <aside className="group flex h-screen text-neutral-500">
-      <SigninOutModal show={signingOut} />
+      <SignOutModal show={signingOut} />
       <motion.div
         className="relative flex w-72 flex-1 flex-col border-r"
         animate={{

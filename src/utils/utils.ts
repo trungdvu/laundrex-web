@@ -8,6 +8,6 @@ export async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(() => resolve(true), ms));
 }
 
-export function getImageUrl(s3ObjectKey: string) {
-  return `${S3_BUCKET_HOST}/${s3ObjectKey}`;
+export function getImageUrl(key: string) {
+  return `${S3_BUCKET_HOST}/${key}`;
 }

@@ -25,7 +25,7 @@ export default async function signIn(
     }
 
     return res.json(signInRes);
-  } catch (error) {
-    throw new Error('sign in error');
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 }

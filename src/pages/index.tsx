@@ -1,7 +1,6 @@
 import Seo from '@/components/seo/seo';
 
 export default function Home() {
-
   return (
     <>
       <Seo />

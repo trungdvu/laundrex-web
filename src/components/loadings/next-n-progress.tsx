@@ -80,6 +80,7 @@ const NextNProgress = ({
       router.events.off('routeChangeComplete', routeChangeEnd);
       router.events.off('routeChangeError', routeChangeError);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return transformCSS(`

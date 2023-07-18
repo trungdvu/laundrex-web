@@ -15,8 +15,8 @@ const authService = Object.freeze({
     });
   },
 
-  async getMe() {
-    return laundrexApi.get('/auth/me');
+  async getMe(url = '/auth/me') {
+    return laundrexApi.get(url);
   },
 });
 

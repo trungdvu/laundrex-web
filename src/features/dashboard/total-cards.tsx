@@ -2,7 +2,7 @@ import { UilArrowGrowth, UilChartDown } from '@iconscout/react-unicons';
 
 export default function TotalCards() {
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-4 px-4">
       <TotalCard
         title="Total Earning"
         number={'$34,775.00'}
@@ -30,12 +30,12 @@ type TotalCardProps = {
 
 function TotalCard({ title, number, icon }: TotalCardProps) {
   return (
-    <div className="w-full bg-neutral-100 p-8 font-medium">
-      <div className="flex items-center text-neutral-500">
+    <div className="w-full rounded-2xl bg-neutral-100 px-4 pb-5 pt-3">
+      <div className="flex items-center font-bold">
         <span className="mr-1">{title}</span>
         {icon}
       </div>
-      <div className="my-3 h-px w-full bg-neutral-400" />
+      <div className="mb-4 mt-2 h-px w-full bg-neutral-400" />
       <span className="text-2xl">{number}</span>
     </div>
   );

@@ -1,6 +1,5 @@
 import Container from '@/components/layouts/container/container';
 import Seo from '@/components/seo/seo';
-import OrderCreation from '@/features/dashboard/order-creation';
 import RecentBookings from '@/features/dashboard/recent-bookings';
 import TotalCards from '@/features/dashboard/total-cards';
 

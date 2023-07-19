@@ -56,24 +56,22 @@ export default function SignUp() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <h4 className="text-2xl font-bold">Sign up</h4>
-          <div className="mt-8 flex w-full flex-col">
-            <Label>Email address</Label>
+          <div className="mt-8 flex w-full flex-col-reverse">
             <Input
-              className="mt-2 w-full"
+              className="peer mt-2 w-full"
               placeholder="username@example.com"
-              type="email"
-              autoComplete="off"
               {...register('email')}
             />
+            <Label className="peer-focus:text-brand-main">Email address</Label>
           </div>
-          <div className="relative mt-4 flex w-full flex-col">
-            <Label>Password</Label>
+          <div className="relative mt-4 flex w-full flex-col-reverse">
             <Input
-              className="mt-2 w-full"
+              className="peer mt-2 w-full"
               placeholder="Enter your password"
               type="password"
               {...register('password')}
             />
+            <Label className="peer-focus:text-brand-main">Password</Label>
             <AnimatePresence>
               {!!error && (
                 <motion.div
@@ -95,7 +93,7 @@ export default function SignUp() {
             })}
           >
             <Button
-              className="mt-4 w-full"
+              className="mt-6 w-full"
               type="submit"
               loading={loading}
               disabled={!isDirty || !isValid}
@@ -103,15 +101,15 @@ export default function SignUp() {
               Sign up
             </Button>
             <div className="mt-12 flex w-96 items-center gap-4">
-              <div className="h-px w-full bg-neutral-300" />
-              <span className="text-neutral-400">OR</span>
-              <div className="h-px w-full bg-neutral-300" />
+              <div className="h-px w-full bg-grey-dark" />
+              <span className="text-grey-main">OR</span>
+              <div className="h-px w-full bg-grey-dark" />
             </div>
-            <h6 className="mt-12 text-lg">
+            <h6 className="mt-12 text-center">
               Already have an account?{' '}
               <Link
                 href="/sign-in"
-                className="font-bold text-brand hover:underline"
+                className="font-bold text-brand-main hover:underline"
               >
                 Sign in now
               </Link>

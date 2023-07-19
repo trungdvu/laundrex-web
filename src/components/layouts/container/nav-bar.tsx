@@ -32,7 +32,7 @@ function NavBar() {
   };
 
   return (
-    <aside className="relative flex px-2 text-black">
+    <aside className="relative flex px-2">
       <SignOutModal show={signingOut} />
       <div className="relative h-0 w-[275px]">
         <motion.div className="fixed h-screen w-[275px]">
@@ -65,12 +65,12 @@ function Menu() {
       {SIDEBAR_MENU_ITEMS.map(({ href, title, Icon }) => (
         <Link
           className={cn('group/item py-0.5 text-xl', {
-            'font-bold text-brand': href === pathname,
+            'text-brand font-bold': href === pathname,
           })}
           key={href}
           href={href}
         >
-          <div className="flex max-w-min items-center rounded-full p-3 transition duration-200 group-hover/item:bg-neutral-100">
+          <div className="flex max-w-min items-center rounded-full p-3 transition duration-200 group-hover/item:bg-base-lighter group-hover/item:bg-opacity-10">
             <Icon size={28} />
             <span className="ml-3">{title}</span>
           </div>
@@ -85,9 +85,9 @@ function Profile() {
 
   return (
     <div className="w-full py-3">
-      <button className="flex w-full items-center justify-between rounded-full p-3 transition duration-200 hover:bg-neutral-100">
+      <button className="flex w-full items-center justify-between rounded-full p-3 transition duration-main hover:bg-base-lighter hover:bg-opacity-10">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 overflow-hidden rounded-full bg-slate-50">
+          <div className="h-10 w-10 overflow-hidden rounded-full bg-base-lighter bg-opacity-10">
             {user?.avatar && (
               <Image
                 className="h-full w-full"

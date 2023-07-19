@@ -82,10 +82,10 @@ export default function Profile({ user: initialUser }: ProfileProps) {
   };
 
   return (
-    <Layout footer={null}>
+    <Layout footer={null} header={null}>
       <Seo />
       <motion.main className="mx-auto max-w-4xl" {...pageMotion}>
-        <button className="mt-5 text-brand" onClick={router.back}>
+        <button className="mt-5 text-brand-main" onClick={router.back}>
           Go back
         </button>
         <form
@@ -113,7 +113,7 @@ export default function Profile({ user: initialUser }: ProfileProps) {
               />
               <button
                 type="button"
-                className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-sm text-neutral-500 transition duration-fast hover:text-black"
+                className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-sm text-grey-main transition duration-fast hover:text-grey-light"
               >
                 Modify
               </button>
@@ -126,14 +126,14 @@ export default function Profile({ user: initialUser }: ProfileProps) {
                 type="text"
                 value={user.role?.name}
               />
-              <span className="mt-2 text-neutral-500">
+              <span className="mt-2 text-sm text-grey-main">
                 You can’t change your role
               </span>
             </div>
             <div className="relative mt-4 flex w-full flex-col">
               <Label>Phone</Label>
               <Input className="mt-2 w-full" readOnly type="tel" />
-              <span className="mt-2 text-neutral-500">
+              <span className="mt-2 text-sm text-grey-main">
                 To enable 2 factor authentication via SMS
               </span>
             </div>
@@ -155,10 +155,10 @@ export default function Profile({ user: initialUser }: ProfileProps) {
               className="hidden"
             />
             <Label className="text-base">Profile picture</Label>
-            <div className="relative mt-2 h-48 w-48 overflow-hidden rounded-full bg-neutral-100">
+            <div className="relative mt-2 h-48 w-48 overflow-hidden rounded-full bg-base-lighter bg-opacity-10">
               {user.avatar && (
                 <Image
-                  className="h-full w-full bg-cover"
+                  className="h-full w-full"
                   priority
                   src={getImageUrl(user.avatar)}
                   width="0"

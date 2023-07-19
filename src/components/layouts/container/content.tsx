@@ -96,9 +96,9 @@ export default function Content({ children, title }: ContainerContentProps) {
   return (
     <main className="relative w-full">
       <div className="flex w-full gap-5">
-        <div className="basis-2/3 border-l border-r border-neutral-200">
+        <div className="basis-2/3 border-l border-r border-grey-dark">
           {!!title && (
-            <div className="sticky top-0 z-10 mb-4 border-b border-neutral-200 bg-white/30 py-6 backdrop-blur-md">
+            <div className="sticky top-0 z-10 mb-4 border-b border-grey-dark bg-black/30 py-6 backdrop-blur-md">
               <h2 className="px-4 text-xl font-bold">{title}</h2>
             </div>
           )}
@@ -114,24 +114,24 @@ export default function Content({ children, title }: ContainerContentProps) {
             }}
             ref={sidebar}
           >
-            <div className="sticky top-0 mb-0.5 w-full bg-white py-0.5">
-              <div className="relative mt-0.5 flex flex-row-reverse items-center overflow-hidden rounded-full bg-neutral-100">
+            <div className="sticky top-0 mb-0.5 w-full bg-black py-0.5">
+              <div className="relative mt-0.5 flex flex-row-reverse items-center overflow-hidden rounded-full bg-base-light">
                 <input
-                  className="peer h-full w-full rounded-full border-2 border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-200 focus:border-brand  focus:bg-white focus:outline-none focus:ring-0"
+                  className="peer h-full w-full rounded-full border border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-main placeholder:text-grey-main focus:border-brand-main focus:outline-none focus:ring-1 focus:ring-brand-main"
                   placeholder="Search Laundrex"
                 />
-                <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 peer-focus:text-brand">
+                <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 text-grey-main peer-focus:text-brand-main">
                   <UilSearch size={20} />
                 </div>
               </div>
             </div>
-            <div className="mt-5 h-40 w-full rounded-2xl bg-neutral-100 px-4 py-3">
+            <div className="mt-5 h-40 w-full rounded-2xl bg-base-main px-4 py-3">
               <h3 className="text-xl font-bold">Features</h3>
             </div>
-            <div className="mt-5 h-96 w-full rounded-2xl bg-neutral-100 px-4 py-3">
+            <div className="mt-5 h-96 w-full rounded-2xl bg-base-main px-4 py-3">
               <h3 className="text-xl font-bold">Trending</h3>
             </div>
-            <div className="mt-5 h-72 w-full rounded-2xl bg-neutral-100 px-4 py-3">
+            <div className="mt-5 h-72 w-full rounded-2xl bg-base-main px-4 py-3">
               <h3 className="text-xl font-bold">Suggestions</h3>
             </div>
             <div className="mt-5 h-64 w-full rounded-2xl bg-transparent px-4 py-3">

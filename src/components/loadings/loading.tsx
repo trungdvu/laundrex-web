@@ -4,7 +4,7 @@ export function Loading({ className }: { className?: string }) {
   return (
     <svg
       className={classNames(
-        'h-8 w-8 animate-spin-fast fill-brand text-inherit',
+        'h-7 w-7 animate-spin-fast fill-brand-main text-white',
         className,
       )}
       aria-hidden="true"

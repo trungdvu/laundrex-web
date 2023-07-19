@@ -21,17 +21,23 @@ import AuthHeader from '../features/auth/auth-header';
 type SignInInputs = {
   email: string;
   password: string;
-  remember?: boolean;
 };
 
-const defaultValues: SignInInputs = {
-  email: 'admin@gmail.com',
-  password: '1234',
-  remember: true,
-};
+const DEFAULT_VALUES: SignInInputs =
+  process.env.ENVIRONMENT === 'development'
+    ? {
+        email: 'admin@gmail.com',
+        password: '1234',
+      }
+    : {
+        email: '',
+        password: '',
+      };
 
 export default function SignIn() {
-  const { register, handleSubmit } = useForm<SignInInputs>({ defaultValues });
+  const { register, handleSubmit } = useForm<SignInInputs>({
+    defaultValues: DEFAULT_VALUES,
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
@@ -46,42 +52,49 @@ export default function SignIn() {
       } else {
         setError((response.data as ErrorData).message);
       }
-    } catch (error) {
+    } catch (error: any) {
+      setError(
+        'Sorry, the server is busy. Please try again after some minutes.',
+      );
       setLoading(false);
     }
   };
 
   return (
     <Layout
-      header={<AuthHeader className="mx-auto max-w-3xl" />}
-      footer={<AuthFooter className="mx-auto max-w-3xl" />}
+      header={<AuthHeader className="mx-auto max-w-4xl" />}
+      footer={<AuthFooter className="mx-auto max-w-4xl" />}
     >
       <Seo />
-      <motion.main className="mx-auto max-w-3xl" {...pageMotion}>
-        <div className="flex w-full gap-8">
+      <motion.main className="mx-auto max-w-4xl" {...pageMotion}>
+        <div className="flex w-full gap-10">
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-            <h4 className="text-xl font-bold">Sign in</h4>
-            <div className="mt-4 flex flex-col">
-              <Label>Email address</Label>
+            <h4 className="text-3xl font-bold">Sign in</h4>
+            <div className="mt-6 flex flex-col-reverse">
               <Input
-                className="mt-2 w-full"
+                className="peer mt-2 w-full"
                 placeholder="username@example.com"
                 type="email"
                 {...register('email')}
               />
+              <Label className="transition duration-main peer-focus:text-brand-main">
+                Email address
+              </Label>
             </div>
-            <div className="relative mt-4 flex flex-col">
-              <Label>Password</Label>
+            <div className="relative mt-4 flex flex-col-reverse">
               <Input
-                className="mt-2 w-full"
+                className="peer mt-2 w-full"
                 placeholder="Enter your password"
                 type="password"
                 {...register('password')}
               />
+              <Label className="transition duration-main peer-focus:text-brand-main">
+                Password
+              </Label>
               <AnimatePresence>
                 {!!error && (
                   <motion.div
-                    className="absolute -bottom-4 left-0 right-0 z-20 flex h-10 items-center border border-orange-700 bg-orange-100 px-4 text-sm text-orange-700"
+                    className="absolute -bottom-4 left-0 right-0 z-20 flex h-10 items-center rounded-sm border border-red-800 bg-red-300 bg-opacity-20 px-4 text-sm text-red-800"
                     initial={{ opacity: 0, translateY: 0 }}
                     animate={{ opacity: 1, translateY: 40 }}
                     exit={{ opacity: 0 }}
@@ -100,36 +113,22 @@ export default function SignIn() {
                 'transslate-y-0': !error,
               })}
             >
-              <Button className="mt-4 w-full" type="submit" loading={loading}>
+              <Button className="mt-6 w-full" type="submit" loading={loading}>
                 Sign in
               </Button>
-              <div className="mt-2 flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    className="h-4 w-4 cursor-pointer rounded-none border-2 border-neutral-400 bg-neutral-50 text-neutral-400 focus:outline-none focus:ring-0 "
-                    id="remember"
-                    type="checkbox"
-                    {...register('remember')}
-                  />
-                  <label
-                    className="ml-2 cursor-pointer text-sm text-neutral-400"
-                    htmlFor="remember"
-                  >
-                    Remember me
-                  </label>
-                </div>
+              <div className="mt-2.5 flex items-center justify-end">
                 <Link
-                  className="text-sm text-neutral-400 hover:underline"
+                  className="text-sm text-grey-main hover:underline"
                   href="/help"
                 >
                   Need help?
                 </Link>
               </div>
-              <h6 className="mt-12 text-lg">
+              <h6 className="mt-12">
                 New to Laundrex?{' '}
                 <Link
                   href="/sign-up"
-                  className="font-bold text-brand hover:underline"
+                  className="font-bold text-brand-main hover:underline"
                 >
                   Sign up now
                 </Link>
@@ -137,8 +136,8 @@ export default function SignIn() {
               </h6>
             </div>
           </form>
-          <div className="bg-gradient-sign-in flex aspect-square h-min w-full flex-col items-center justify-center">
-            <div className="w-min text-3xl font-extrabold">
+          <div className="flex h-[24.25rem] w-full flex-col items-center justify-center rounded-sm bg-white">
+            <div className="w-min text-3xl font-bold text-grey-darker">
               <h2 className="text-left">THE</h2>
               <h1 className="text-5xl">LAUNDRY</h1>
               <h2 className="text-right">SERVICE</h2>

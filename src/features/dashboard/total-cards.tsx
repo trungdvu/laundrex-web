@@ -30,13 +30,13 @@ type TotalCardProps = {
 
 function TotalCard({ title, number, icon }: TotalCardProps) {
   return (
-    <div className="w-full rounded-2xl bg-neutral-100 px-4 pb-5 pt-3">
-      <div className="flex items-center font-bold">
+    <div className="w-full rounded-2xl bg-base-main px-4 pb-5 pt-3">
+      <div className="flex items-center whitespace-nowrap">
         <span className="mr-1">{title}</span>
         {icon}
       </div>
-      <div className="mb-4 mt-2 h-px w-full bg-neutral-400" />
-      <span className="text-2xl">{number}</span>
+      <div className="mb-4 mt-2 h-px w-full bg-grey-dark" />
+      <span className="text-2xl font-bold">{number}</span>
     </div>
   );
 }

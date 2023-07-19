@@ -21,13 +21,12 @@ export default function Button({
   return (
     <button
       className={cn(
-        'relative transform bg-black px-8 py-4 text-lg font-bold text-white transition duration-fast',
-        {
-          'hover:bg-neutral-800 focus:outline-none active:bg-neutral-700':
-            !disabled && !loading,
-        },
-        { 'opacity-70 hover:bg-black active:bg-black': loading },
-        { 'opacity-20 hover:bg-black active:bg-black': disabled },
+        'relative rounded-full bg-brand-main px-6 py-3 text-lg font-bold',
+        'transition duration-main',
+        'focus:outline-none',
+        { 'hover:bg-brand-dark': !disabled && !loading },
+        { 'bg-brand-main bg-opacity-100 hover:bg-brand-main': loading },
+        { 'bg-opacity-20 hover:bg-brand-main hover:bg-opacity-20': disabled },
         className,
       )}
       disabled={disabled || loading}
@@ -36,7 +35,8 @@ export default function Button({
       <div
         className={cn(
           'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0',
-          { 'opacity-100': loading },
+          { hidden: !loading },
+          { 'block opacity-100': loading },
         )}
       >
         <Loading />

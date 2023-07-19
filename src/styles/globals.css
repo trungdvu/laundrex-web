@@ -2,23 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply bg-black;
+  }
+  body {
+    @apply text-grey-light;
+  }
+}
+
 @layer components {
   .bg-gradient-sign-in {
     background: linear-gradient(
         125deg,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.5) 100%
       ),
-      #7ea949;
+      #ffffff;
   }
 
   .btn-icon {
-    @apply flex items-center justify-center rounded-full text-neutral-500 transition duration-fast hover:bg-neutral-100 hover:text-black;
-  }
-
-  .auto-complete-input:-webkit-autofill:hover,
-  .auto-complete-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
+    @apply flex items-center justify-center rounded-full text-grey-main transition duration-main hover:bg-base-lighter hover:bg-opacity-10;
   }
 }

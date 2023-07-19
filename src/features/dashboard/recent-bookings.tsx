@@ -4,9 +4,9 @@ import { UilFilter } from '@iconscout/react-unicons';
 export default function RecentBookings() {
   return (
     <div>
-      <div className="flex items-center justify-between border-t py-3">
+      <div className="flex items-center justify-between border-t border-grey-dark py-3">
         <h3 className="px-4 text-xl font-bold">Recent Booking</h3>
-        <div className="flex items-center justify-center gap-3 px-4">
+        <div className="flex items-center justify-center gap-3 px-4 text-grey-main">
           <button className="btn-icon h-10 w-10">
             <UilSearch />
           </button>
@@ -18,7 +18,7 @@ export default function RecentBookings() {
 
       <div className="relative mt-1 overflow-x-auto px-4">
         <table className="w-full rounded-2xl text-left">
-          <thead className="bg-neutral-100">
+          <thead className="border-b border-grey-dark">
             <tr>
               <th
                 scope="col"
@@ -41,7 +41,7 @@ export default function RecentBookings() {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b text-black">
+            <tr className="border-b border-grey-dark">
               <td scope="row" className="whitespace-nowrap px-4 py-3">
                 Trung Dinh Vu
               </td>
@@ -49,7 +49,7 @@ export default function RecentBookings() {
               <td className="px-4 py-3">09-04-2024</td>
               <td className="px-4 py-3">$10</td>
             </tr>
-            <tr className="border-b text-black">
+            <tr className="border-b border-grey-dark">
               <td scope="row" className="whitespace-nowrap px-4 py-3">
                 Thu Hang 831
               </td>

@@ -13,7 +13,7 @@ type NextNProgressProps = {
 };
 
 const NextNProgress = ({
-  color = '#7EA949',
+  color = '#1d9bf0',
   startPosition = 0.3,
   stopDelayMs = 200,
   height = 3,
@@ -95,18 +95,6 @@ const NextNProgress = ({
       left: 0;
       width: 100%;
       height: ${height}px;
-    }
-    #nprogress .peg {
-      display: block;
-      position: absolute;
-      right: 0px;
-      width: 100px;
-      height: 100%;
-      box-shadow: 0 0 10px ${color}, 0 0 5px ${color};
-      opacity: 1;
-      -webkit-transform: rotate(3deg) translate(0px, -4px);
-      -ms-transform: rotate(3deg) translate(0px, -4px);
-      transform: rotate(3deg) translate(0px, -4px);
     }
     .nprogress-custom-parent {
       overflow: hidden;

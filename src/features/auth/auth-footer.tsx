@@ -15,7 +15,7 @@ export default function AuthFooter({
   return (
     <footer
       className={cn(
-        'mt-12 flex w-full items-center justify-between py-4 text-neutral-400',
+        'mt-12 flex w-full items-center justify-between py-4 text-grey-main',
         className,
       )}
     >
@@ -23,7 +23,7 @@ export default function AuthFooter({
         © {year}, Laundrex, Inc. All rights reserved.
       </span>
       {languageButtonVisible ? (
-        <button className="flex items-center border border-neutral-300 bg-neutral-50 px-2 py-px text-base hover:border-neutral-400 hover:bg-neutral-100 focus:outline-none">
+        <button className="flex items-center rounded-sm border border-grey-dark bg-base-light bg-opacity-80 py-px pl-2 pr-0.5 hover:bg-opacity-100 focus:outline-none">
           English
           <UilAngleDown className="ml-px" />
         </button>

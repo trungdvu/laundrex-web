@@ -16,7 +16,7 @@ const NextNProgress = ({
   color = '#1d9bf0',
   startPosition = 0.3,
   stopDelayMs = 200,
-  height = 3,
+  height = 2,
   showOnShallow,
   nonce,
   transformCSS = (css) => <style nonce={nonce}>{css}</style>,
@@ -85,6 +85,8 @@ const NextNProgress = ({
 
   return transformCSS(`
     #nprogress {
+      position: relative;
+      z-index: 9999;
       pointer-events: none;
     }
     #nprogress .bar {
@@ -95,13 +97,6 @@ const NextNProgress = ({
       left: 0;
       width: 100%;
       height: ${height}px;
-    }
-    .nprogress-custom-parent {
-      overflow: hidden;
-      position: relative;
-    }
-    .nprogress-custom-parent #nprogress .bar {
-      position: absolute;
     }
   `);
 };

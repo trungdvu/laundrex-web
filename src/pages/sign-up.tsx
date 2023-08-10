@@ -1,16 +1,12 @@
-import { pageMotion } from '@/utils/motion';
+import Icon from '@/components/icons/icon';
+import Input from '@/components/inputs/input';
 import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Button from '../components/buttons/button';
-import Input from '../components/inputs/input';
-import Label from '../components/inputs/label';
 import Layout from '../components/layouts/layout';
 import Seo from '../components/seo/seo';
-import AuthFooter from '../features/auth/auth-footer';
-import AuthHeader from '../features/auth/auth-header';
 
 type SignUpInputs = {
   email: string;
@@ -18,106 +14,66 @@ type SignUpInputs = {
 };
 
 export default function SignUp() {
-  const {
-    register,
-    handleSubmit,
-    formState: { isDirty, isValid },
-  } = useForm<SignUpInputs>();
+  const { register, handleSubmit, formState } = useForm<SignUpInputs>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const onSubmit: SubmitHandler<SignUpInputs> = async ({ email, password }) => {
     setLoading(true);
+    await new Promise((r) => setTimeout(() => r(true), 1000));
     setLoading(false);
   };
 
   return (
-    <Layout
-      header={
-        <AuthHeader
-          className="mx-auto flex max-w-3xl justify-center"
-          textBrandVisible={false}
-        />
-      }
-      footer={
-        <AuthFooter
-          className="mx-auto flex max-w-xs justify-center"
-          languageButtonVisible={false}
-        />
-      }
-    >
+    <Layout>
       <Seo />
-      <motion.main
-        className="mx-auto flex max-w-3xl flex-col items-center"
-        {...pageMotion}
-      >
-        <form
-          className="mx-auto flex w-96 flex-col items-center"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <h4 className="text-2xl font-bold">Sign up</h4>
-          <div className="mt-8 flex w-full flex-col-reverse">
-            <Input
-              className="peer mt-2 w-full"
-              placeholder="username@example.com"
-              {...register('email')}
-            />
-            <Label className="peer-focus:text-brand-main">Email address</Label>
-          </div>
-          <div className="relative mt-4 flex w-full flex-col-reverse">
-            <Input
-              className="peer mt-2 w-full"
-              placeholder="Enter your password"
-              type="password"
-              {...register('password')}
-            />
-            <Label className="peer-focus:text-brand-main">Password</Label>
-            <AnimatePresence>
-              {!!error && (
-                <motion.div
-                  className="absolute -bottom-4 left-0 right-0 z-20 flex h-10 items-center border border-orange-700 bg-orange-100 px-4 text-sm text-orange-700"
-                  initial={{ opacity: 0, translateY: 0 }}
-                  animate={{ opacity: 1, translateY: 40 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="truncate">{error}</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <div
-            className={classNames('w-full transition duration-200', {
-              'translate-y-14': !!error,
-              'transslate-y-0': !error,
-            })}
-          >
-            <Button
-              className="mt-6 w-full"
-              type="submit"
-              loading={loading}
-              disabled={!isDirty || !isValid}
-            >
+      <main className="mx-auto flex max-w-md flex-col px-5">
+        <div className="mt-10 flex items-center justify-center">
+          <Icon className="h-10 w-auto" name="logo-l" />
+        </div>
+        <h4 className="mt-10 text-center text-2xl">
+          Create a Laundrex account
+        </h4>
+        <p className="mt-5 rounded-sm border border-yellow-100 border-opacity-30 bg-yellow-50 bg-opacity-30 py-2 text-center text-yellow-600">
+          This feature is not available!
+        </p>
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            wrapperClassName="mt-5"
+            className="w-full"
+            label="Email address"
+            type="email"
+            placeholder="username@example.com"
+            maxLength={180}
+            {...register('email')}
+          />
+          <Input
+            wrapperClassName="mt-5"
+            label="Password"
+            placeholder="Enter your password"
+            type="password"
+            autoComplete="off"
+            {...register('password')}
+          />
+          <div className={classNames('w-full transition duration-200')}>
+            <Button className="mt-6 w-full" type="submit" loading={loading}>
               Sign up
             </Button>
-            <div className="mt-12 flex w-96 items-center gap-4">
+            <div className="mt-10 flex w-full items-center gap-4">
               <div className="h-px w-full bg-grey-dark" />
               <span className="text-grey-main">OR</span>
               <div className="h-px w-full bg-grey-dark" />
             </div>
-            <h6 className="mt-12 text-center">
+            <h6 className="mt-10 text-center">
               Already have an account?{' '}
-              <Link
-                href="/sign-in"
-                className="font-bold text-brand-main hover:underline"
-              >
+              <Link href="/sign-in" className="text-brand-main hover:underline">
                 Sign in now
               </Link>
               .
             </h6>
           </div>
         </form>
-      </motion.main>
+      </main>
     </Layout>
   );
 }

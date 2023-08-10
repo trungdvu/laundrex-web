@@ -1,9 +1,7 @@
 import Button from '@/components/buttons/button';
 import Input from '@/components/inputs/input';
-import Label from '@/components/inputs/label';
 import Layout from '@/components/layouts/layout';
 import { Loading } from '@/components/loadings/loading';
-import Seo from '@/components/seo/seo';
 import authService from '@/libs/auth-service';
 import fileUploadService from '@/libs/file-upload-service';
 import { withLaundrexApi } from '@/libs/laundrex-api';
@@ -83,9 +81,8 @@ export default function Profile({ user: initialUser }: ProfileProps) {
 
   return (
     <Layout footer={null} header={null}>
-      <Seo />
-      <motion.main className="mx-auto max-w-4xl" {...pageMotion}>
-        <button className="mt-5 text-brand-main" onClick={router.back}>
+      <motion.main className="mx-auto mt-20 max-w-3xl" {...pageMotion}>
+        <button className="text-brand-main" onClick={router.back}>
           Go back
         </button>
         <form
@@ -93,32 +90,21 @@ export default function Profile({ user: initialUser }: ProfileProps) {
           onSubmit={handleSubmit(handleUpdate)}
         >
           <div className="w-7/12">
-            <div className="relative mt-4 flex w-full flex-col">
-              <Label>Name</Label>
-              <Input
-                className="mt-2 w-full"
-                placeholder="Your display name"
-                type="text"
-                {...register('name')}
-              />
-            </div>
-            <div className="relative mt-4 flex w-full flex-col">
-              <Label>Email address</Label>
-              <Input
-                className="mt-2 w-full"
-                readOnly
-                placeholder="username@example.com"
-                type="email"
-                value={user.email}
-              />
-              <button
-                type="button"
-                className="absolute -right-2 top-1/2 mt-2 translate-x-full transform text-sm text-grey-main transition duration-fast hover:text-grey-light"
-              >
-                Modify
-              </button>
-            </div>
-            <div className="relative mt-4 flex w-full flex-col">
+            <Input
+              wrapperClassName="mt-5"
+              placeholder="Your display name"
+              type="text"
+              {...register('name')}
+            />
+            <Input
+              wrapperClassName="mt-5"
+              readOnly
+              placeholder="username@example.com"
+              type="email"
+              value={user.email}
+            />
+
+            {/* <div className="relative mt-4 flex w-full flex-col">
               <Label>Role</Label>
               <Input
                 readOnly
@@ -136,7 +122,7 @@ export default function Profile({ user: initialUser }: ProfileProps) {
               <span className="mt-2 text-sm text-grey-main">
                 To enable 2 factor authentication via SMS
               </span>
-            </div>
+            </div> */}
             <Button
               type="submit"
               className="mt-8 w-full"
@@ -154,7 +140,7 @@ export default function Profile({ user: initialUser }: ProfileProps) {
               onChange={handleAvatarChange}
               className="hidden"
             />
-            <Label className="text-base">Profile picture</Label>
+            <label className="text-base">Profile picture</label>
             <div className="relative mt-2 h-48 w-48 overflow-hidden rounded-full bg-base-lighter bg-opacity-10">
               {user.avatar && (
                 <Image

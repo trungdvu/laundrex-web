@@ -1,13 +1,21 @@
 import { Dialog, Transition } from '@headlessui/react';
+import classNames from 'classnames';
 import { Fragment, memo } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type ModalProps = {
   show?: boolean;
   onClose?: () => any;
   children?: any;
+  wrapperClassName?: string;
 };
 
-function Modal({ show = false, onClose = () => {}, children }: ModalProps) {
+function Modal({
+  show = false,
+  onClose = () => {},
+  children,
+  wrapperClassName,
+}: ModalProps) {
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -24,7 +32,11 @@ function Modal({ show = false, onClose = () => {}, children }: ModalProps) {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div
+            className={twMerge(
+              classNames('absolute inset-0', wrapperClassName),
+            )}
+          >
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-200"

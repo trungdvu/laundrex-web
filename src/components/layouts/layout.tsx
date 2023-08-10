@@ -1,18 +1,24 @@
-import Footer from './footer';
-import Header from './header';
+import { pageMotion } from '@/utils/motion';
+import { motion } from 'framer-motion';
 
 export type LayoutProps = {
   children: React.ReactNode;
   header?: JSX.Element | null;
   footer?: JSX.Element | null;
+  className?: string;
 };
 
-export default function Layout({ children, header, footer }: LayoutProps) {
+export default function Layout({
+  children,
+  header,
+  footer,
+  className,
+}: LayoutProps) {
   return (
-    <>
-      {header !== undefined ? header : <Header />}
+    <motion.div className={className} {...pageMotion}>
+      {header && header}
       {children}
-      {footer !== undefined ? footer : <Footer />}
-    </>
+      {footer && footer}
+    </motion.div>
   );
 }

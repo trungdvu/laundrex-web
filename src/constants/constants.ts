@@ -51,10 +51,15 @@ export const HTTP_STATUS = {
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
   HTTP_VERSION_NOT_SUPPORTED: 505,
-};
+} as const;
 
 export const COOKIE_KEY = {
   AUTH: 'Authentication',
 };
 
 export const S3_BUCKET_HOST = 'https://laundrex-assets.s3.amazonaws.com';
+
+export const ENV = {
+  DEV: 'development',
+  PROD: 'production',
+};

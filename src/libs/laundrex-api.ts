@@ -1,6 +1,6 @@
-import { API_BASE, COOKIE_KEY } from '@/constants/constants';
+import { API_BASE, COOKIE_KEY, HTTP_STATUS } from '@/constants/constants';
 import { ApiResponse } from '@/utils/types';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import cookie from 'cookie';
 import Cookies from 'js-cookie';
 import { GetServerSidePropsContext } from 'next';
@@ -17,6 +17,18 @@ const axiosInstance = axios.create({
 
 async function injectAccessToken(token: string) {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
+async function handleResponseError(error: AxiosError) {
+  if (error.response) {
+    return error.response.data;
+  } else {
+    return {
+      ok: false,
+      statusCode: error.request?.status || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+      data: { message: 'unknown message' },
+    } as ApiResponse;
+  }
 }
 
 async function send(method: Method, path: string, body?: any) {
@@ -52,7 +64,7 @@ async function send(method: Method, path: string, body?: any) {
 
     return res.data;
   } catch (error: any) {
-    throw new Error('Internal server error');
+    return handleResponseError(error);
   }
 }
 

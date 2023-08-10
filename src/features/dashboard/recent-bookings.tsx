@@ -1,22 +1,24 @@
-import { UilSearch } from '@iconscout/react-unicons';
-import { UilFilter } from '@iconscout/react-unicons';
+import IconButton from '@/components/buttons/icon-button';
+import Icon from '@/components/icons/icon';
 
 export default function RecentBookings() {
   return (
     <div>
-      <div className="flex items-center justify-between border-t border-grey-dark py-3">
-        <h3 className="px-4 text-xl font-bold">Recent Booking</h3>
-        <div className="flex items-center justify-center gap-3 px-4 text-grey-main">
-          <button className="btn-icon h-10 w-10">
-            <UilSearch />
-          </button>
-          <button className="btn-icon h-10 w-10">
-            <UilFilter />
-          </button>
+      <div className="flex items-center justify-between border-t border-grey-dark pb-1.5 pt-3">
+        <h3 className="px-4 text-base font-bold md:text-lg lg:text-xl">
+          Recent Booking
+        </h3>
+        <div className="flex items-center justify-center gap-0.5 px-4 text-grey-main">
+          <IconButton className="p-2">
+            <Icon name="search" />
+          </IconButton>
+          <IconButton className="p-2">
+            <Icon name="filter" />
+          </IconButton>
         </div>
       </div>
 
-      <div className="relative mt-1 overflow-x-auto px-4">
+      <div className="relative mt-1 hidden overflow-scroll overflow-x-auto whitespace-nowrap px-4 text-sm md:block lg:text-base">
         <table className="w-full rounded-2xl text-left">
           <thead className="border-b border-grey-dark">
             <tr>

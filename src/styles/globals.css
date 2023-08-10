@@ -7,11 +7,15 @@
     @apply bg-black;
   }
   body {
-    @apply text-grey-light;
+    @apply overscroll-y-auto text-grey-light lg:overscroll-y-none;
   }
 }
 
 @layer components {
+  .box-bg-hover {
+    @apply hover:bg-base-lighter hover:bg-opacity-10;
+  }
+
   .bg-gradient-sign-in {
     background: linear-gradient(
         125deg,
@@ -19,9 +23,5 @@
         rgba(255, 255, 255, 0.5) 100%
       ),
       #ffffff;
-  }
-
-  .btn-icon {
-    @apply flex items-center justify-center rounded-full text-grey-main transition duration-main hover:bg-base-lighter hover:bg-opacity-10;
   }
 }

@@ -9,12 +9,12 @@ import userService from '@/libs/user-service';
 import { pageMotion } from '@/utils/motion';
 import { UserDetail } from '@/utils/types';
 import { getImageUrl } from '@/utils/utils';
-import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 
 type ProfileProps = {
   user: UserDetail;
@@ -154,11 +154,9 @@ export default function Profile({ user: initialUser }: ProfileProps) {
                 />
               )}
               <button
-                className={classNames(
+                className={twMerge(
                   'absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center text-black transition duration-fast active:bg-opacity-10 enabled:opacity-0 enabled:hover:bg-black enabled:hover:bg-opacity-5 enabled:hover:opacity-100',
-                  {
-                    'bg-black bg-opacity-20': avatarFileUploading,
-                  },
+                  avatarFileUploading && 'bg-black bg-opacity-20',
                 )}
                 type="button"
                 disabled={avatarFileUploading}

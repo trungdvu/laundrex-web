@@ -1,12 +1,16 @@
+import Avatar from '@/components/avatar';
+import DisplayName from '@/components/display-name';
 import Icon from '@/components/icons/icon';
+import { Loading } from '@/components/loadings/loading';
 import Modal from '@/components/modals/modal';
 import useMe from '@/hooks/useMe';
-import { getImageUrl } from '@/utils/utils';
+import useWindowSize from '@/hooks/useWindowSize';
+import { fetcher } from '@/libs/fetcher';
 import { Dialog } from '@headlessui/react';
-import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { NAV_ITEMS } from './nav-bar.config';
 
 type Props = {
@@ -15,17 +19,36 @@ type Props = {
 };
 
 export default function NavbarMobileModal({ show, onClose }: Props) {
+  const [signingOut, setSigningOut] = useState(false);
   const router = useRouter();
   const { user } = useMe();
+  const [height, width] = useWindowSize();
+
+  const handleSignOut = async () => {
+    try {
+      setSigningOut(true);
+      const res = await fetcher('sign-out');
+      setSigningOut(false);
+      if (res.ok) {
+        router.replace('/sign-in');
+      }
+    } catch (error) {
+      setSigningOut(false);
+    }
+  };
+
+  useEffect(() => {
+    onClose?.();
+  }, [height, width]);
 
   return (
     <Modal
+      wrapperClassName="overflow-hidden bg-black/30 backdrop-blur-md text-base md:text-lg bg-opacity-25"
       show={show}
-      wrapperClassName="overflow-hidden bg-black/30 backdrop-blur-md text-base md:text-lg"
     >
       <Dialog.Panel className="h-full w-full overflow-y-scroll">
         <button
-          className="md:4 fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full bg-base-lighter p-2 text-grey-darker hover:bg-white hover:bg-opacity-80"
+          className="md:4 fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full p-2 text-grey-light hover:text-opacity-60"
           onClick={onClose}
         >
           <Icon name="cross" className="h-5 w-5 md:h-6 md:w-6" />
@@ -33,29 +56,28 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
         <div className="flex flex-col items-center gap-5 pt-10">
           <div className="flex flex-col items-center">
             <Link href="/admin/profile">
-              <div className="relative mx-auto h-16 w-16 overflow-hidden rounded-full bg-opacity-10 md:h-20 md:w-20">
-                {user?.avatar && (
-                  <Image
-                    fill
-                    src={getImageUrl(user?.avatar)}
-                    alt="profile avatar"
-                  />
-                )}
-              </div>
-              <p className="mt-2 font-bold">{user?.name ?? user?.email}</p>
-              {!!user?.role?.name && (
-                <p className="mt-0.5 text-sm text-grey-main md:text-base">
-                  @{user.role.name.toLowerCase()}
-                </p>
-              )}
+              <Avatar
+                className="mx-auto h-14 w-14 md:h-16 md:w-16"
+                textClassName="text-lg md:text-3xl"
+                name={user?.name}
+                email={user?.email}
+                url={user?.avatar}
+              />
+              <DisplayName
+                email={user?.email}
+                name={user?.name}
+                className="text-center text-base"
+                supportTextClassName="text-sm"
+              />
             </Link>
           </div>
           <div className="flex w-full flex-col gap-0.5">
             {NAV_ITEMS.map(({ href, title }) => (
               <Link
-                className={classNames('group/item flex justify-center', {
-                  'font-bold': href === router.pathname,
-                })}
+                className={twMerge(
+                  'group/item flex justify-center',
+                  href === router.pathname && 'font-bold',
+                )}
                 href={href}
                 key={href}
               >
@@ -66,10 +88,16 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
             ))}
           </div>
           <button
-            className={classNames('group/item flex justify-center py-0.5')}
+            className="group/item flex justify-center p-3"
+            onClick={handleSignOut}
           >
-            <span className="max-w-max rounded-full p-4 transition duration-main group-hover/item:bg-base-lighter group-hover/item:bg-opacity-10">
+            <span className="relative max-w-max rounded-full transition duration-main group-hover/item:bg-base-lighter group-hover/item:bg-opacity-10">
               Sign out
+              {signingOut && (
+                <div className="absolute -right-10 top-1/2 -translate-y-1/2">
+                  <Loading className="h-5 w-5" />
+                </div>
+              )}
             </span>
           </button>
         </div>

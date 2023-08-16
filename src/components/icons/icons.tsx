@@ -180,3 +180,11 @@ export function Cross({ className }: IconProp) {
     </svg>
   );
 }
+
+export function ArrowUpFilled({ className }: IconProp) {
+  return (
+    <svg aria-hidden="true" className={className} viewBox="0 0 24 24">
+      <path d="M22 17H2L12 6l10 11z"></path>
+    </svg>
+  );
+}

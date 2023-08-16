@@ -1,10 +1,10 @@
-import classNames from 'classnames';
+import { twMerge } from 'tailwind-merge';
 
 export function Loading({ className }: { className?: string }) {
   return (
     <svg
-      className={classNames(
-        'h-7 w-7 animate-spin-fast fill-brand-main text-white',
+      className={twMerge(
+        'h-7 w-7 animate-spin-fast fill-brand-main text-grey-light',
         className,
       )}
       aria-hidden="true"

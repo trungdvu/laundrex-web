@@ -1,6 +1,5 @@
 import Icon from '@/components/icons/icon';
 import Input from '@/components/inputs/input';
-import classNames from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -55,7 +54,7 @@ export default function SignUp() {
             autoComplete="off"
             {...register('password')}
           />
-          <div className={classNames('w-full transition duration-200')}>
+          <div className="w-full transition duration-200">
             <Button className="mt-6 w-full" type="submit" loading={loading}>
               Sign up
             </Button>

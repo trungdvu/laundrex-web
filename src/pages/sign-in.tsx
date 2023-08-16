@@ -4,7 +4,6 @@ import { ENV } from '@/constants/constants';
 import { fetcher } from '@/libs/fetcher';
 import { ErrorData } from '@/utils/types';
 import { capitalizeFirstLetter } from '@/utils/utils';
-import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -162,7 +161,7 @@ export const getServerSideProps = () => {
 
   if (isDev) {
     return {
-      props: { email: 'admin@gmail.com', password: 'admin1234' },
+      props: { email: 'admin@gmail.com', password: '1234' },
     };
   }
 

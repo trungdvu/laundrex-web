@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -14,10 +13,8 @@ export default function IconButton({ className, children, ...rest }: Props) {
   return (
     <button
       className={twMerge(
-        classNames(
-          'flex items-center justify-center rounded-full p-3 text-grey-main transition duration-main hover:bg-base-lighter hover:bg-opacity-10',
-          className,
-        ),
+        'flex items-center justify-center rounded-full p-3 text-grey-main transition duration-main hover:bg-base-lighter hover:bg-opacity-10',
+        className,
       )}
       {...rest}
     >

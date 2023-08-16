@@ -1,5 +1,4 @@
 import { Dialog, Transition } from '@headlessui/react';
-import classNames from 'classnames';
 import { Fragment, memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -28,13 +27,14 @@ function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black bg-opacity-20" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
           <div
             className={twMerge(
-              classNames('absolute inset-0', wrapperClassName),
+              'absolute inset-0 bg-black bg-opacity-80',
+              wrapperClassName,
             )}
           >
             <Transition.Child

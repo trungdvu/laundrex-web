@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { twMerge } from 'tailwind-merge';
 
 export default function TotalCards() {
   return (
@@ -20,15 +20,16 @@ type TotalCardProps = {
 function TotalCard({ title, number, icon, className }: TotalCardProps) {
   return (
     <div
-      className={classNames(
-        'rounded-2xl bg-base-main p-4 text-sm md:text-base',
+      className={twMerge(
+        'flex flex-col gap-2 rounded-2xl bg-base-main p-4 text-sm md:text-base',
+        className,
       )}
     >
       <div className="flex">
         <span className="mr-1">{title}</span>
         {icon && icon}
       </div>
-      <div className="my-4 h-px w-full bg-grey-dark" />
+      <div className="h-px w-full bg-grey-dark" />
       <span className="block font-mono text-lg font-bold md:text-xl">
         {number}
       </span>

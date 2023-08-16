@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 import {
   ArrowLeft,
+  ArrowUpFilled,
   Bell,
   BellFilled,
   Bookmark,
@@ -46,6 +46,7 @@ export const ICONS = {
   eye: Eye,
   'eye-close': EyeClosed,
   cross: Cross,
+  'arrow-up-filled': ArrowUpFilled,
 };
 
 type IconName = keyof typeof ICONS;
@@ -60,12 +61,7 @@ export default function Icon({
   const Component = ICONS[name];
   return (
     <Component
-      className={twMerge(
-        classNames(
-          'h-5 w-5 fill-current text-inherit md:h-6 md:w-6',
-          className,
-        ),
-      )}
+      className={twMerge('h-6 w-6 fill-current text-inherit', className)}
     />
   );
 }

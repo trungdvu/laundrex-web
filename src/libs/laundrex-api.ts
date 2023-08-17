@@ -46,19 +46,14 @@ async function send(method: Method, path: string, body?: any) {
       // fetch on browser. include token into req header
       const accessToken = Cookies.get(COOKIE_KEY.AUTH);
 
-      if (!accessToken) {
-        throw new Error('Unauthorized');
+      if (accessToken) {
+        injectAccessToken(accessToken);
       }
-
-      injectAccessToken(accessToken);
 
       res = await axiosInstance({
         method,
         url: endPoint(path),
         data: body,
-        headers: {
-          Authorization: accessToken ? `Bearer ${accessToken}` : undefined,
-        },
       });
     }
 
@@ -99,10 +94,8 @@ export function withLaundrexApi(
     ];
 
     if (!accessToken) {
-      throw new Error('Unauthorized');
+      injectAccessToken(accessToken);
     }
-
-    injectAccessToken(accessToken);
 
     return getServerSidePropsFunc?.(context);
   };

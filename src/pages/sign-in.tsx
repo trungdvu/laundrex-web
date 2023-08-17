@@ -65,9 +65,14 @@ export default function SignIn({
     <Layout className="flex min-h-screen flex-col lg:min-h-fit">
       <Seo />
       <main className="w-full flex-1">
-        <div className="mx-auto w-full max-w-md lg:max-w-[52rem]">
+        <motion.div
+          className="mx-auto w-full max-w-md lg:max-w-[52rem]"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="mt-10 flex items-center justify-center lg:justify-start">
-            <Icon className="h-10 w-auto" name="logo-l" />
+            <Icon className="ml-0.5 h-10 w-auto" name="logo-l" />
           </div>
           <div className="mt-10 flex w-full flex-col gap-10 px-5 lg:flex-row lg:px-0">
             <form
@@ -150,7 +155,7 @@ export default function SignIn({
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </Layout>
   );

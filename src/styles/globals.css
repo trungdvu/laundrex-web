@@ -9,6 +9,14 @@
   body {
     @apply overscroll-y-auto text-grey-light lg:overscroll-y-none;
   }
+
+  *::-moz-selection {
+    @apply bg-brand-main bg-opacity-20;
+  }
+
+  *::selection {
+    @apply bg-brand-main bg-opacity-20;
+  }
 }
 
 @layer components {

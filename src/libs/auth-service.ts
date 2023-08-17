@@ -15,6 +15,16 @@ const authService = Object.freeze({
     });
   },
 
+  async verifyToken(userId: string, token: string) {
+    return laundrexApi.get(`/auth/verify/${userId}/${token}`);
+  },
+
+  async resendVerifyToken(email: string) {
+    return laundrexApi.post('/auth/verify/resend', {
+      email,
+    });
+  },
+
   async getMe(url = '/auth/me') {
     return laundrexApi.get(url);
   },

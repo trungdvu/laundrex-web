@@ -2,17 +2,21 @@ import { twMerge } from 'tailwind-merge';
 import {
   ArrowLeft,
   ArrowUpFilled,
+  At,
   Bell,
   BellFilled,
   Bookmark,
   BookmarkFilled,
+  Check,
   ChevronDown,
   Cross,
+  Exclamation,
   Eye,
   EyeClosed,
   Filter,
   Home,
   HomeFilled,
+  Letter,
   List,
   ListFilled,
   LogoL,
@@ -22,6 +26,7 @@ import {
   MoreCircle,
   Search,
   SearchThick,
+  Verify,
 } from './icons';
 
 export const ICONS = {
@@ -47,6 +52,11 @@ export const ICONS = {
   'eye-close': EyeClosed,
   cross: Cross,
   'arrow-up-filled': ArrowUpFilled,
+  letter: Letter,
+  icon: Check,
+  verify: Verify,
+  at: At,
+  exclamation: Exclamation,
 };
 
 type IconName = keyof typeof ICONS;

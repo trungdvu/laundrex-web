@@ -5,6 +5,7 @@ import { Loading } from '../loadings/loading';
 export type ButtonProps = {
   loading?: boolean;
   iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 } & DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
@@ -13,6 +14,7 @@ export type ButtonProps = {
 export default function Button({
   children,
   iconLeft,
+  iconRight,
   loading,
   className,
   disabled,
@@ -24,9 +26,8 @@ export default function Button({
     <button
       className={twMerge(
         'relative rounded-full bg-brand-main px-6 py-3 text-lg font-bold transition duration-main focus:outline-none',
-        !disabled && !loading && 'hover:bg-brand-dark',
-        loading && 'bg-brand-main bg-opacity-100 hover:bg-brand-main',
-        isDisabled && 'bg-opacity-50 hover:bg-brand-main hover:bg-opacity-20',
+        !isDisabled && !loading && 'hover:bg-brand-dark',
+        isDisabled && 'bg-opacity-60',
         className,
       )}
       disabled={isDisabled}
@@ -48,6 +49,7 @@ export default function Button({
       >
         {iconLeft ? <div className="mr-3">{iconLeft}</div> : null}
         {children}
+        {iconRight ? <div className="ml-3">{iconRight}</div> : null}
       </div>
     </button>
   );

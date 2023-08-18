@@ -4,41 +4,17 @@
 
 @layer base {
   html {
-    @apply bg-black;
+    @apply bg-base-normal;
   }
   body {
-    @apply overscroll-y-auto text-grey-light lg:overscroll-y-none;
+    @apply overscroll-y-auto text-normal lg:overscroll-y-none;
   }
 
   *::-moz-selection {
-    @apply bg-brand-main bg-opacity-20;
+    @apply bg-brand-normal bg-opacity-20;
   }
 
   *::selection {
-    @apply bg-brand-main bg-opacity-20;
-  }
-}
-
-@layer components {
-  .box-bg-hover {
-    @apply hover:bg-base-lighter hover:bg-opacity-10;
-  }
-
-  .shadow-popper {
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px,
-      rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
-  }
-
-  .filter-drop-popper {
-    filter: drop-shadow(rgb(51, 54, 57) 1px -1px 1px);
-  }
-
-  .bg-gradient-sign-in {
-    background: linear-gradient(
-        125deg,
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(255, 255, 255, 0.5) 100%
-      ),
-      #ffffff;
+    @apply bg-brand-normal bg-opacity-20;
   }
 }

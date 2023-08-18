@@ -25,8 +25,8 @@ export default function Button({
   return (
     <button
       className={twMerge(
-        'relative rounded-full bg-brand-main px-6 py-3 text-lg font-bold transition duration-main focus:outline-none',
-        !isDisabled && !loading && 'hover:bg-brand-dark',
+        'relative rounded-full bg-brand-normal px-6 py-3 text-lg font-bold text-white transition duration-normal focus:outline-none',
+        !isDisabled && !loading && 'hover:bg-brand-inverted',
         isDisabled && 'bg-opacity-60',
         className,
       )}

@@ -26,7 +26,9 @@ async function handleResponseError(error: AxiosError) {
     return {
       ok: false,
       statusCode: error.request?.status || HTTP_STATUS.INTERNAL_SERVER_ERROR,
-      data: { message: 'unknown message' },
+      data: {
+        message: 'Oops! The server’s busy, please try again after 5 mins',
+      },
     } as ApiResponse;
   }
 }

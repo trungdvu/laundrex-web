@@ -43,12 +43,12 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
 
   return (
     <Modal
-      wrapperClassName="overflow-hidden bg-black/30 backdrop-blur-md text-base md:text-lg bg-opacity-25"
+      wrapperClassName="overflow-hidden backdrop-blur-sm text-base md:text-lg"
       show={show}
     >
       <Dialog.Panel className="h-full w-full overflow-y-scroll">
         <button
-          className="md:4 fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full p-2 text-grey-light hover:text-opacity-60"
+          className="md:4 fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full p-2 text-normal hover:text-opacity-60"
           onClick={onClose}
         >
           <Icon name="cross" className="h-5 w-5 md:h-6 md:w-6" />
@@ -66,8 +66,8 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
               <DisplayName
                 email={user?.email}
                 name={user?.name}
-                className="text-center text-base"
-                supportTextClassName="text-sm"
+                className="mt-2 text-center text-base"
+                supportTextClassName="hidden"
               />
             </Link>
           </div>
@@ -81,7 +81,7 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
                 href={href}
                 key={href}
               >
-                <span className="max-w-min rounded-full p-3 transition duration-main group-hover/item:bg-base-lighter group-hover/item:bg-opacity-10">
+                <span className="max-w-min rounded-full p-3 transition duration-normal group-hover/item:bg-secondary-normal group-hover/item:bg-opacity-10">
                   {title}
                 </span>
               </Link>
@@ -91,7 +91,7 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
             className="group/item flex justify-center p-3"
             onClick={handleSignOut}
           >
-            <span className="relative max-w-max rounded-full transition duration-main group-hover/item:bg-base-lighter group-hover/item:bg-opacity-10">
+            <span className="relative max-w-max rounded-full transition duration-normal group-hover/item:bg-secondary-normal group-hover/item:bg-opacity-10">
               Sign out
               {signingOut && (
                 <div className="absolute -right-10 top-1/2 -translate-y-1/2">

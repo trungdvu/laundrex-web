@@ -49,7 +49,7 @@ const Input = React.forwardRef<HTMLInputElement | null, Props>(
           <input
             {...rest}
             className={twMerge(
-              'auto-complete-input peer w-full rounded-sm border border-grey-dark bg-transparent p-4 text-base transition duration-fast placeholder:font-normal placeholder:text-grey-main hover:bg-base-lighter hover:bg-opacity-10 focus:border-brand-main focus:bg-base-lighter focus:bg-opacity-10 focus:outline-none focus:ring-1 focus:ring-brand-main',
+              'auto-complete-input peer w-full rounded-sm border border-normal bg-transparent p-4 text-base transition duration-normal placeholder:font-normal placeholder:text-secondary-normal hover:bg-hover-normal focus:border-brand-normal focus:bg-hover-normal focus:outline-none focus:ring-1 focus:ring-brand-normal',
               isPasswordType && 'pr-14',
               className,
             )}

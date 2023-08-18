@@ -100,7 +100,7 @@ export default function SignIn({
                   {!!error && (
                     <motion.span
                       ref={errorRef}
-                      className="absolute left-0 right-0 z-20 flex items-center rounded-sm border border-red-800 bg-red-300 bg-opacity-20 px-4 py-4 text-sm text-red-800"
+                      className="absolute left-0 right-0 z-20 flex items-center rounded-sm border border-error-normal bg-error-normal/20 px-4 py-4 text-sm text-error-normal"
                       initial={{ opacity: 0, translateY: 0 }}
                       animate={{ opacity: 1, translateY: 20 }}
                       exit={{ opacity: 0 }}
@@ -127,14 +127,14 @@ export default function SignIn({
                 <h6 className="mt-10 text-center md:mt-12 lg:text-left">
                   New to Laundrex?{' '}
                   <Link
-                    className="text-brand-main hover:underline"
+                    className="text-brand-normal hover:underline"
                     href="/sign-up"
                   >
                     Sign up now
                   </Link>
                   .
                 </h6>
-                <footer className="mx-auto flex w-full max-w-md flex-col-reverse items-center justify-between gap-3 px-5 py-5 text-grey-main lg:mt-5 lg:max-w-[52rem] lg:items-start lg:px-0">
+                <footer className="mx-auto flex w-full max-w-md flex-col-reverse items-center justify-between gap-3 px-5 py-5 text-secondary-normal lg:mt-5 lg:max-w-[52rem] lg:items-start lg:px-0">
                   <span className="text-sm">
                     © {currentYear}, Laundrex, Inc. All rights reserved.
                   </span>
@@ -142,7 +142,7 @@ export default function SignIn({
               </motion.div>
             </form>
             <div className="hidden aspect-square h-fit w-full flex-col items-center justify-center rounded-full bg-white lg:flex">
-              <div className="w-min text-3xl font-bold text-grey-darker">
+              <div className="w-min text-3xl font-bold text-normal">
                 <h2 className="text-left">THE</h2>
                 <h1 className="text-5xl">LAUNDRY</h1>
                 <h2 className="text-right">SERVICE</h2>

@@ -21,7 +21,7 @@ export default function Avatar({
     <div
       className={twMerge(
         'relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full',
-        !url && 'bg-base-light',
+        !url && 'bg-secondary-normal',
         className,
       )}
     >

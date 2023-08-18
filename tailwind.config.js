@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { fontFamily } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: [
@@ -13,21 +14,43 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
+      backgroundColor: {
+        'base-normal': 'white',
+        'base-inverted': 'black',
+        normal: '#f7f9f9',
+        inverted: '',
+        'secondary-normal': '#eff3f4',
+        'secondary-inverted': '',
+        'hover-normal': 'rgba(0,0,0,0.03)',
+        'hover-inverted': '',
+        'hover-secondary-normal': 'rgba(15,20,25,0.1)',
+        'hover-secondary-inverted': '',
+        'tertiary-normal': '#0f141a',
+        'tertiary-inverted': '',
+        'quaternary-normal': '#eafaff',
+        'quaternary-inverted': '',
+        'backdrop-normal': 'rgba(0,0,0,0.4)',
+        'backdrop-inverted': '',
+        'border-normal': '#eff3f4',
+        'border-inverted': '',
+      },
+      textColor: {
+        normal: '#0f141a',
+        inverted: '',
+        'secondary-normal': '#536471',
+        'secondary-inverted': '',
+      },
+      borderColor: {
+        normal: '#eff3f4',
+        'normal-inverted': '',
+      },
       colors: {
         brand: {
-          main: '#1d9bf0',
-          dark: '#1a8cd8',
+          normal: '#1d9bf0',
+          inverted: '#1a8cd8',
         },
-        grey: {
-          main: '#71767b',
-          light: '#e7e9ea',
-          dark: '#2f3336',
-          darker: '#0f1419',
-        },
-        base: {
-          main: '#16181c',
-          light: '#212327',
-          lighter: '#eff3f4',
+        error: {
+          normal: '#f4212e',
         },
       },
       animation: {
@@ -35,7 +58,13 @@ module.exports = {
       },
       transitionDuration: {
         fast: '75ms',
-        main: '200ms',
+        normal: '200ms',
+      },
+      boxShadow: {
+        normal:
+          'rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px',
+        inverted:
+          'rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px',
       },
     },
   },

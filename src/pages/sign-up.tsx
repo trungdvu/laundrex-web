@@ -146,15 +146,15 @@ export default function SignUp() {
                       Sign up
                     </Button>
                     <div className="mt-10 flex w-full items-center gap-4">
-                      <div className="h-px w-full bg-grey-dark" />
-                      <span className="text-grey-main">OR</span>
-                      <div className="h-px w-full bg-grey-dark" />
+                      <div className="h-px w-full bg-border-normal" />
+                      <span className="text-secondary-normal">OR</span>
+                      <div className="h-px w-full bg-border-normal" />
                     </div>
                     <h6 className="mt-10 text-center">
                       Already have an account?{' '}
                       <Link
                         href="/sign-in"
-                        className="text-brand-main hover:underline"
+                        className="text-brand-normal hover:underline"
                       >
                         Sign in now
                       </Link>
@@ -164,15 +164,15 @@ export default function SignUp() {
                 </form>
               </>
             ) : (
-              <div className="shadow-popper relative mt-16 flex flex-col items-center justify-center gap-4 rounded-lg p-3 text-center text-sm text-grey-main">
+              <div className="relative mt-16 flex flex-col items-center justify-center gap-4 rounded-lg bg-base-normal p-3 text-center text-sm text-secondary-normal shadow-normal">
                 <Icon
-                  className="absolute left-1/2 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 text-grey-light"
+                  className="absolute left-1/2 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 text-normal"
                   name="letter"
                 />
-                <h2 className="mt-6 text-base font-bold text-grey-light">
+                <h2 className="mt-6 text-base font-bold text-normal">
                   Please confirm your email
                 </h2>
-                <p className="text-grey-light">
+                <p className="text-normal">
                   Your’e almost there! We sent an email to verify your account.
                 </p>
                 <p>
@@ -182,7 +182,7 @@ export default function SignUp() {
                 </p>
                 <p>Still can’t find the email?</p>
                 <button
-                  className="hover:box-bg-hover rounded-full border border-grey-dark p-3"
+                  className="rounded-full border border-normal px-6 py-3 hover:bg-hover-normal"
                   onClick={handleResend}
                 >
                   {resending ? 'Resending...' : 'Resend'}
@@ -190,7 +190,7 @@ export default function SignUp() {
                 <p>OR</p>
                 <Link
                   href="/sign-in"
-                  className="pb-3 underline hover:text-grey-light"
+                  className="pb-3 underline hover:text-normal"
                 >
                   Login without verifying my account
                 </Link>

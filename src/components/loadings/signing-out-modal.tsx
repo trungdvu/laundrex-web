@@ -8,7 +8,7 @@ export default function SignOutModal({ show = false }) {
       show={show}
       wrapperClassName="flex items-center justify-center  overflow-hidden"
     >
-      <Dialog.Panel className="shadow-popper flex w-full max-w-xs  flex-col items-center justify-center overflow-hidden rounded-lg bg-black p-4 text-left align-middle text-grey-light transition-all">
+      <Dialog.Panel className="flex w-full max-w-xs flex-col  items-center justify-center overflow-hidden rounded-lg bg-black p-4 text-left align-middle text-normal shadow-normal transition-all">
         <div className="mb-4">
           <Loading />
         </div>

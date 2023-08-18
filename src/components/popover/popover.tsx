@@ -58,7 +58,7 @@ export default function Popover({
             {buttonChild}
           </HUIPopover.Button>
           <Transition
-            enter="transition ease-out duration-main"
+            enter="transition ease-out duration-normal"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="transition ease-in duration-fast"
@@ -67,7 +67,7 @@ export default function Popover({
           >
             <HUIPopover.Panel
               className={twMerge(
-                'shadow-popper rounded-lg bg-black',
+                'rounded-lg bg-base-normal shadow-normal',
                 panelClassName,
               )}
               ref={setPopperElement}

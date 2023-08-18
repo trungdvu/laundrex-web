@@ -4,7 +4,7 @@ export function Loading({ className }: { className?: string }) {
   return (
     <svg
       className={twMerge(
-        'h-7 w-7 animate-spin-fast fill-brand-main text-grey-light',
+        'h-7 w-7 animate-spin-fast fill-brand-normal text-normal',
         className,
       )}
       aria-hidden="true"

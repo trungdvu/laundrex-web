@@ -27,16 +27,11 @@ function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-20" />
+          <div className="fixed inset-0 bg-backdrop-normal" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div
-            className={twMerge(
-              'absolute inset-0 bg-black bg-opacity-80',
-              wrapperClassName,
-            )}
-          >
+          <div className={twMerge('absolute inset-0', wrapperClassName)}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-200"

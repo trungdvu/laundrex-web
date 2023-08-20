@@ -244,3 +244,11 @@ export function Calendar({ className }: IconProp) {
     </svg>
   );
 }
+
+export function MenuList({ className }: IconProp) {
+  return (
+    <svg aria-hidden="true" className={className} viewBox="0 0 80 66">
+      <path d="M0 61.607a3.595 3.595 0 013.595-3.594h71.89a3.595 3.595 0 010 7.189H3.596A3.595 3.595 0 010 61.607zm0-28.756a3.595 3.595 0 013.595-3.595h71.89a3.595 3.595 0 010 7.19H3.596A3.595 3.595 0 010 32.85zM0 4.095A3.595 3.595 0 013.595.5h71.89a3.595 3.595 0 010 7.19H3.596A3.595 3.595 0 010 4.094z"></path>
+    </svg>
+  );
+}

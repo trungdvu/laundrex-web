@@ -22,6 +22,7 @@ import {
   List,
   ListFilled,
   LogoL,
+  MenuList,
   Message,
   MessageFilled,
   More,
@@ -61,6 +62,7 @@ export const ICONS = {
   exclamation: Exclamation,
   doodle: Doodle,
   calendar: Calendar,
+  'menu-list': MenuList,
 };
 
 type IconName = keyof typeof ICONS;

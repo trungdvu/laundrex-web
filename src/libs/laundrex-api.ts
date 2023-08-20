@@ -95,6 +95,8 @@ export function withLaundrexApi(
       COOKIE_KEY.AUTH
     ];
 
+    console.log('🚀 ~ return ~ accessToken:', accessToken);
+
     if (!accessToken) {
       injectAccessToken(accessToken);
     }

@@ -20,17 +20,16 @@ export default function Button({
   disabled,
   ...rest
 }: ButtonProps) {
-  const isDisabled = disabled || loading;
-
   return (
     <button
       className={twMerge(
         'relative rounded-full bg-brand-normal px-6 py-3 text-lg font-bold text-white transition duration-normal focus:outline-none',
-        !isDisabled && !loading && 'hover:bg-brand-inverted',
-        isDisabled && 'bg-opacity-60',
+        !disabled && !loading && 'hover:bg-brand-inverted',
+        loading && 'bg-brand-inverted',
+        !loading && disabled && 'bg-disabled-normal',
         className,
       )}
-      disabled={isDisabled}
+      disabled={disabled}
       {...rest}
     >
       <div
@@ -39,7 +38,7 @@ export default function Button({
           loading && 'block opacity-100',
         )}
       >
-        <Loading />
+        <Loading className="h-5 w-5 fill-white text-normal/20 md:h-7 md:w-7" />
       </div>
       <div
         className={twMerge(

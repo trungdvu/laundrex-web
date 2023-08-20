@@ -5,12 +5,10 @@ import { fetcher } from '@/libs/fetcher';
 import { ErrorData } from '@/utils/types';
 import { capitalizeFirstLetter } from '@/utils/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import doodle14 from '../../public/highlights/doodle-14.svg';
 import Button from '../components/buttons/button';
 import Layout from '../components/layouts/layout';
 import Seo from '../components/seo/seo';
@@ -79,12 +77,13 @@ export default function SignIn({
               className="mx-auto w-full lg:w-full"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <h4 className="text-center text-2xl lg:text-left">
+              <h1 className="text-center text-2xl font-bold md:text-3xl lg:text-left">
                 Login to Laundrex
-              </h4>
+              </h1>
               <Input
                 wrapperClassName="mt-5"
                 label="Email address"
+                hideLabelOnMobile
                 placeholder="username@example.com"
                 type="email"
                 {...register('email')}
@@ -92,6 +91,7 @@ export default function SignIn({
               <div className="relative mt-5">
                 <Input
                   label="Password"
+                  hideLabelOnMobile
                   placeholder="Enter your password"
                   type="password"
                   {...register('password')}
@@ -117,7 +117,7 @@ export default function SignIn({
                 transition={{ duration: 0.2 }}
               >
                 <Button
-                  className="mt-6 w-full"
+                  className="mt-6 w-full text-base"
                   type="submit"
                   loading={loading}
                   disabled={loading}
@@ -127,7 +127,7 @@ export default function SignIn({
                 <h6 className="mt-10 text-center md:mt-12 lg:text-left">
                   New to Laundrex?{' '}
                   <Link
-                    className="text-brand-normal hover:underline"
+                    className="font-bold text-brand-normal hover:underline"
                     href="/sign-up"
                   >
                     Sign up now
@@ -142,17 +142,12 @@ export default function SignIn({
               </motion.div>
             </form>
             <div className="hidden aspect-square h-fit w-full flex-col items-center justify-center rounded-full bg-white lg:flex">
-              <div className="w-min text-3xl font-bold text-normal">
-                <h2 className="text-left">THE</h2>
-                <h1 className="text-5xl">LAUNDRY</h1>
+              <div className="w-min text-3xl font-black">
+                <h2 className="text-lef">THE</h2>
+                <h1 className="text-6xl">LAUNDRY</h1>
                 <h2 className="text-right">SERVICE</h2>
               </div>
-              <Image
-                className="mt-2 px-4"
-                priority
-                src={doodle14}
-                alt="highlight"
-              />
+              <Icon className="h-auto w-80" name="doodle" />
             </div>
           </div>
         </motion.div>

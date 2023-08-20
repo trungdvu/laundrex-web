@@ -21,7 +21,7 @@ module.exports = {
         inverted: '',
         'secondary-normal': '#eff3f4',
         'secondary-inverted': '',
-        'hover-normal': 'rgba(0,0,0,0.03)',
+        'hover-normal': 'rgba(0,0,0,0.05)',
         'hover-inverted': '',
         'hover-secondary-normal': 'rgba(15,20,25,0.1)',
         'hover-secondary-inverted': '',
@@ -33,6 +33,8 @@ module.exports = {
         'backdrop-inverted': '',
         'border-normal': '#eff3f4',
         'border-inverted': '',
+        placeholder: '#cfd9de',
+        'placeholder-inverted': '',
       },
       textColor: {
         normal: '#0f141a',
@@ -51,6 +53,11 @@ module.exports = {
         },
         error: {
           normal: '#f4212e',
+          inverted: '',
+        },
+        disabled: {
+          normal: '#87898c',
+          inverted: '',
         },
       },
       animation: {
@@ -65,6 +72,13 @@ module.exports = {
           'rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px',
         inverted:
           'rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px',
+      },
+      fontSize: {
+        sm: '0.8125rem',
+        base: '0.9375rem',
+        lg: '1.0625rem',
+        '2xl': '1.625rem',
+        '3xl': '1.9375rem',
       },
     },
   },

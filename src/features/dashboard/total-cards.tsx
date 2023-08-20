@@ -30,9 +30,7 @@ function TotalCard({ title, number, icon, className }: TotalCardProps) {
         {icon && icon}
       </div>
       <div className="h-px w-full bg-border-normal" />
-      <span className="block font-mono text-lg font-bold md:text-xl">
-        {number}
-      </span>
+      <span className="block text-lg font-bold md:text-2xl">{number}</span>
     </div>
   );
 }

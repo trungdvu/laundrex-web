@@ -7,6 +7,7 @@ type ModalProps = {
   onClose?: () => any;
   children?: any;
   wrapperClassName?: string;
+  backdropClassName?: string;
 };
 
 function Modal({
@@ -14,6 +15,7 @@ function Modal({
   onClose = () => {},
   children,
   wrapperClassName,
+  backdropClassName,
 }: ModalProps) {
   return (
     <Transition appear show={show} as={Fragment}>
@@ -27,7 +29,12 @@ function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-backdrop-normal" />
+          <div
+            className={twMerge(
+              'fixed inset-0 bg-backdrop-normal',
+              backdropClassName,
+            )}
+          />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">

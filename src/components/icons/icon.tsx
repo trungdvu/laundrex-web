@@ -7,9 +7,11 @@ import {
   BellFilled,
   Bookmark,
   BookmarkFilled,
+  Calendar,
   Check,
   ChevronDown,
   Cross,
+  Doodle,
   Exclamation,
   Eye,
   EyeClosed,
@@ -57,6 +59,8 @@ export const ICONS = {
   verify: Verify,
   at: At,
   exclamation: Exclamation,
+  doodle: Doodle,
+  calendar: Calendar,
 };
 
 type IconName = keyof typeof ICONS;
@@ -71,7 +75,7 @@ export default function Icon({
   const Component = ICONS[name];
   return (
     <Component
-      className={twMerge('h-6 w-6 fill-current text-inherit', className)}
+      className={twMerge('h-5 w-5 fill-current text-inherit', className)}
     />
   );
 }

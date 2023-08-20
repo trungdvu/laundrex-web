@@ -94,17 +94,18 @@ export default function SignUp() {
                 <div className="mt-10 flex items-center justify-center">
                   <Icon className="h-10 w-auto" name="logo-l" />
                 </div>
-                <h4 className="mt-10 text-center text-2xl">
-                  Create a Laundrex account
-                </h4>
+                <h1 className="mt-10 text-left text-2xl font-bold md:text-3xl">
+                  Create your account
+                </h1>
                 <form
-                  className="relative w-full"
+                  className="relative m-auto w-full"
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <Input
                     wrapperClassName="mt-5"
                     className="w-full"
                     label="Email address"
+                    hideLabelOnMobile
                     type="email"
                     placeholder="username@example.com"
                     maxLength={180}
@@ -113,6 +114,7 @@ export default function SignUp() {
                   <Input
                     wrapperClassName="mt-5"
                     label="Password"
+                    hideLabelOnMobile
                     placeholder="Enter your password"
                     type="password"
                     autoComplete="off"
@@ -139,7 +141,7 @@ export default function SignUp() {
                     transition={{ duration: 0.2 }}
                   >
                     <Button
-                      className="mt-6 w-full"
+                      className="mt-6 w-full text-base"
                       type="submit"
                       loading={loading}
                     >
@@ -154,7 +156,7 @@ export default function SignUp() {
                       Already have an account?{' '}
                       <Link
                         href="/sign-in"
-                        className="text-brand-normal hover:underline"
+                        className="font-bold text-brand-normal hover:underline"
                       >
                         Sign in now
                       </Link>
@@ -164,12 +166,9 @@ export default function SignUp() {
                 </form>
               </>
             ) : (
-              <div className="relative mt-16 flex flex-col items-center justify-center gap-4 rounded-lg bg-base-normal p-3 text-center text-sm text-secondary-normal shadow-normal">
-                <Icon
-                  className="absolute left-1/2 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 text-normal"
-                  name="letter"
-                />
-                <h2 className="mt-6 text-base font-bold text-normal">
+              <div className="relative mt-16 flex flex-col items-center justify-center gap-4 rounded-lg bg-base-normal p-3 text-center text-sm text-secondary-normal shadow-normal md:p-4">
+                <Icon className="h-12 w-12 text-normal" name="at" />
+                <h2 className="text-lg font-bold text-normal">
                   Please confirm your email
                 </h2>
                 <p className="text-normal">

@@ -7,7 +7,7 @@
     @apply bg-base-normal;
   }
   body {
-    @apply overscroll-y-auto text-normal lg:overscroll-y-none;
+    @apply overscroll-y-auto text-base text-normal lg:overscroll-y-none;
   }
 
   *::-moz-selection {

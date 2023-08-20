@@ -11,9 +11,14 @@ import NavbarMobileModal from './nav-bar-mobile-modal';
 type ContainerContentProps = {
   children?: any;
   title?: string;
+  sidebarVisible?: boolean;
 };
 
-export default function Content({ children, title }: ContainerContentProps) {
+export default function Content({
+  children,
+  title,
+  sidebarVisible = true,
+}: ContainerContentProps) {
   const sidebar = useRef<HTMLDivElement>(null);
   const currSidebarPosY = useRef(0);
   const [direction, setDirection] = useState('up');
@@ -138,41 +143,43 @@ export default function Content({ children, title }: ContainerContentProps) {
           )}
           {children}
         </div>
-        <div className="relative mr-3 hidden basis-1/3 xl:block">
-          {isSidebarScrollable ? <div style={{ marginTop }} /> : null}
-          <div
-            className="sticky h-fit w-full"
-            style={{
-              bottom: sidebarBottom,
-              top: sidebarTop,
-            }}
-            ref={sidebar}
-          >
-            <div className="sticky top-0 flex h-14 w-full flex-col justify-center bg-base-normal md:h-16 lg:h-20">
-              <div className="relative flex flex-row-reverse items-center overflow-hidden rounded-full bg-secondary-normal">
-                <input
-                  className="peer h-full w-full rounded-full border border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-normal placeholder:text-secondary-normal focus:border-brand-normal focus:outline-none focus:ring-1 focus:ring-brand-normal"
-                  placeholder="Search Laundrex"
-                />
-                <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 text-secondary-normal peer-focus:text-brand-normal">
-                  <Icon className="h-5 w-5" name="search" />
+        {sidebarVisible && (
+          <div className="relative mr-3 hidden basis-1/3 xl:block">
+            {isSidebarScrollable ? <div style={{ marginTop }} /> : null}
+            <div
+              className="sticky h-fit w-full"
+              style={{
+                bottom: sidebarBottom,
+                top: sidebarTop,
+              }}
+              ref={sidebar}
+            >
+              <div className="sticky top-0 flex h-14 w-full flex-col justify-center bg-base-normal md:h-16 lg:h-20">
+                <div className="relative flex flex-row-reverse items-center overflow-hidden rounded-full bg-secondary-normal">
+                  <input
+                    className="peer h-full w-full rounded-full border border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-normal placeholder:text-secondary-normal focus:border-brand-normal focus:outline-none focus:ring-1 focus:ring-brand-normal"
+                    placeholder="Search Laundrex"
+                  />
+                  <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 text-secondary-normal peer-focus:text-brand-normal">
+                    <Icon className="h-5 w-5" name="search" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="mt-4 h-40 w-full rounded-2xl bg-normal px-4 py-3">
-              <h3 className="text-xl font-bold">Features</h3>
-            </div>
-            <div className="mt-4 h-96 w-full rounded-2xl bg-normal px-4 py-3">
-              <h3 className="text-xl font-bold">Trending</h3>
-            </div>
-            <div className="mt-4 h-72 w-full rounded-2xl bg-normal px-4 py-3">
-              <h3 className="text-xl font-bold">Suggestions</h3>
-            </div>
-            <div className="mt-4 h-64 w-full rounded-2xl bg-transparent px-4 py-3">
-              <span className="text-xs">Terms of Service</span>
+              <div className="mt-4 h-40 w-full rounded-2xl bg-normal px-4 py-3">
+                <h3 className="text-xl font-bold">Features</h3>
+              </div>
+              <div className="mt-4 h-96 w-full rounded-2xl bg-normal px-4 py-3">
+                <h3 className="text-xl font-bold">Trending</h3>
+              </div>
+              <div className="mt-4 h-72 w-full rounded-2xl bg-normal px-4 py-3">
+                <h3 className="text-xl font-bold">Suggestions</h3>
+              </div>
+              <div className="mt-4 h-64 w-full rounded-2xl bg-transparent px-4 py-3">
+                <span className="text-xs">Terms of Service</span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );

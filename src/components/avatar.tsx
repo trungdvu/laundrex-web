@@ -26,7 +26,12 @@ export default function Avatar({
       )}
     >
       {url ? (
-        <Image fill src={getImageUrl(url)} alt="profile avatar" />
+        <Image
+          className="bg-cover bg-center bg-no-repeat"
+          fill
+          src={getImageUrl(url)}
+          alt="profile avatar"
+        />
       ) : !!name || !!email ? (
         <span className={twMerge('text-center text-sm', textClassName)}>
           {(name || email)?.[0].toUpperCase()}

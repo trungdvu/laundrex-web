@@ -43,7 +43,8 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
 
   return (
     <Modal
-      wrapperClassName="overflow-hidden backdrop-blur-sm text-base md:text-lg"
+      wrapperClassName="overflow-hidden text-base md:text-lg"
+      backdropClassName="bg-white"
       show={show}
     >
       <Dialog.Panel className="h-full w-full overflow-y-scroll">

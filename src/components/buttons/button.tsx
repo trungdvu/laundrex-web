@@ -23,10 +23,10 @@ export default function Button({
   return (
     <button
       className={twMerge(
-        'relative rounded-full bg-brand-normal px-6 py-3 text-lg font-bold text-white transition duration-normal focus:outline-none',
+        'bg-brand-main relative rounded-full px-6 py-3 text-lg font-bold text-white transition duration-normal focus:outline-none',
         !disabled && !loading && 'hover:bg-brand-inverted',
         loading && 'bg-brand-inverted',
-        !loading && disabled && 'bg-disabled-normal',
+        !loading && disabled && 'bg-disabled-main',
         className,
       )}
       disabled={disabled}
@@ -38,7 +38,7 @@ export default function Button({
           loading && 'block opacity-100',
         )}
       >
-        <Loading className="h-5 w-5 fill-white text-normal/20 md:h-7 md:w-7" />
+        <Loading className="h-5 w-5 fill-white text-main/20 md:h-7 md:w-7" />
       </div>
       <div
         className={twMerge(

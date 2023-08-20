@@ -60,7 +60,7 @@ export default function SignIn({
   }, [error]);
 
   return (
-    <Layout className="flex min-h-screen flex-col lg:min-h-fit">
+    <Layout className="flex flex-col">
       <Seo />
       <main className="w-full flex-1">
         <motion.div
@@ -69,10 +69,10 @@ export default function SignIn({
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="mt-10 flex items-center justify-center lg:justify-start">
+          <div className="my-8 flex items-center justify-center lg:justify-start">
             <Icon className="ml-0.5 h-10 w-auto" name="logo-l" />
           </div>
-          <div className="mt-10 flex w-full flex-col gap-10 px-5 lg:flex-row lg:px-0">
+          <div className="flex w-full flex-col gap-10 px-4 lg:flex-row lg:px-0">
             <form
               className="mx-auto w-full lg:w-full"
               onSubmit={handleSubmit(onSubmit)}
@@ -81,18 +81,18 @@ export default function SignIn({
                 Login to Laundrex
               </h1>
               <Input
-                wrapperClassName="mt-5"
-                label="Email address"
+                wrapperClassName="mt-4"
+                label="Email"
                 hideLabelOnMobile
-                placeholder="username@example.com"
+                placeholder="User@example.com"
                 type="email"
                 {...register('email')}
               />
-              <div className="relative mt-5">
+              <div className="relative mt-4">
                 <Input
                   label="Password"
                   hideLabelOnMobile
-                  placeholder="Enter your password"
+                  placeholder="Password"
                   type="password"
                   {...register('password')}
                 />
@@ -100,7 +100,7 @@ export default function SignIn({
                   {!!error && (
                     <motion.span
                       ref={errorRef}
-                      className="absolute left-0 right-0 z-20 flex items-center rounded-sm border border-error-normal bg-error-normal/20 px-4 py-4 text-sm text-error-normal"
+                      className="border-error-main bg-error-main/20 text-error-main absolute left-0 right-0 z-20 flex items-center rounded-sm border px-4 py-4 text-sm"
                       initial={{ opacity: 0, translateY: 0 }}
                       animate={{ opacity: 1, translateY: 20 }}
                       exit={{ opacity: 0 }}
@@ -117,24 +117,24 @@ export default function SignIn({
                 transition={{ duration: 0.2 }}
               >
                 <Button
-                  className="mt-6 w-full text-base"
+                  className="mt-4 w-full text-base"
                   type="submit"
                   loading={loading}
                   disabled={loading}
                 >
                   Sign in
                 </Button>
-                <h6 className="mt-10 text-center md:mt-12 lg:text-left">
+                <h6 className="mt-8 text-center lg:text-left">
                   New to Laundrex?{' '}
                   <Link
-                    className="font-bold text-brand-normal hover:underline"
+                    className="text-brand-main font-bold hover:underline"
                     href="/sign-up"
                   >
                     Sign up now
                   </Link>
                   .
                 </h6>
-                <footer className="mx-auto flex w-full max-w-md flex-col-reverse items-center justify-between gap-3 px-5 py-5 text-secondary-normal lg:mt-5 lg:max-w-[52rem] lg:items-start lg:px-0">
+                <footer className="mx-auto mt-4 flex w-full max-w-md flex-col-reverse items-center justify-between gap-3 px-4 py-4 text-secondary lg:max-w-[52rem] lg:items-start lg:px-0">
                   <span className="text-sm">
                     © {currentYear}, Laundrex, Inc. All rights reserved.
                   </span>

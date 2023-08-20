@@ -39,7 +39,7 @@ function NavBar() {
             <div className="relative flex h-14 w-full items-center pr-3 md:h-16 lg:h-20">
               <div className="mt-0.5 flex h-14 cursor-pointer items-center">
                 <Link
-                  className="rounded-full p-3 transition duration-normal hover:bg-hover-normal"
+                  className="hover:bg-hover rounded-full p-3 transition duration-normal"
                   href="/admin/dashboard"
                 >
                   <div className="relative h-[26.5px] w-[26.5px]">
@@ -60,7 +60,7 @@ function NavBar() {
                   key={href}
                   href={href}
                 >
-                  <div className="flex max-w-min items-center rounded-full p-3 transition duration-200 group-hover/item:bg-hover-normal">
+                  <div className="group-hover/item:bg-hover flex max-w-min items-center rounded-full p-3 transition duration-200">
                     {href === router.pathname ? iconActive : icon}
                     <span className="ml-3">{title}</span>
                   </div>
@@ -73,12 +73,12 @@ function NavBar() {
                   <div className="flex flex-col gap-1 py-2 text-base font-bold">
                     <Link
                       href="/admin/profile"
-                      className="px-4 py-3 transition duration-normal hover:bg-hover-normal"
+                      className="hover:bg-hover px-4 py-3 transition duration-normal"
                     >
                       Profile
                     </Link>
                     <button
-                      className="px-4 py-3 text-left transition duration-normal hover:bg-hover-normal"
+                      className="hover:bg-hover px-4 py-3 text-left transition duration-normal"
                       onClick={handleSignOut}
                     >
                       Sign out
@@ -103,7 +103,7 @@ function NavBar() {
                 }
                 buttonProps={{
                   className:
-                    'hover:bg-hover-normal flex w-full items-center justify-between rounded-full p-3 transition duration-normal',
+                    'hover:bg-hover flex w-full items-center justify-between rounded-full p-3 transition duration-normal',
                 }}
                 panelProps={{
                   className: 'w-screen max-w-[275px] ',

@@ -40,9 +40,9 @@ const Input = React.forwardRef<HTMLInputElement | null, Props>(
         {!!label && (
           <span
             className={twMerge(
-              'mb-1',
+              'mb-2',
               hideLabelOnMobile && 'hidden lg:block',
-              disabled && 'text-disabled-normal',
+              disabled && 'text-disabled-main',
             )}
           >
             {label}
@@ -52,10 +52,9 @@ const Input = React.forwardRef<HTMLInputElement | null, Props>(
           <input
             {...rest}
             className={twMerge(
-              'auto-complete-input peer w-full rounded-sm border border-normal bg-transparent px-4 py-3 text-base transition duration-normal placeholder:font-normal placeholder:text-secondary-normal md:py-4',
+              'auto-complete-input border-main peer w-full rounded-sm border bg-transparent px-4 py-3 text-lg transition duration-normal placeholder:font-normal placeholder:text-secondary md:py-4',
               isPasswordType && 'pr-14',
-              disabled &&
-                'border-disabled-normal bg-disabled-normal text-white',
+              disabled && 'border-disabled-main bg-disabled-main text-white',
               className,
             )}
             type={type}

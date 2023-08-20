@@ -80,7 +80,7 @@ export default function SignUp() {
   return (
     <Layout>
       <Seo />
-      <main className="mx-auto flex max-w-md flex-col px-5">
+      <main className="mx-auto flex max-w-md flex-col px-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -91,10 +91,10 @@ export default function SignUp() {
           >
             {step === 'one' ? (
               <>
-                <div className="mt-10 flex items-center justify-center">
+                <div className="mt-8 flex items-center justify-center">
                   <Icon className="h-10 w-auto" name="logo-l" />
                 </div>
-                <h1 className="mt-10 text-left text-2xl font-bold md:text-3xl">
+                <h1 className="mt-8 text-left text-2xl font-bold md:text-3xl">
                   Create your account
                 </h1>
                 <form
@@ -102,20 +102,20 @@ export default function SignUp() {
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <Input
-                    wrapperClassName="mt-5"
+                    wrapperClassName="mt-4"
                     className="w-full"
                     label="Email address"
                     hideLabelOnMobile
                     type="email"
-                    placeholder="username@example.com"
+                    placeholder="Username@example.com"
                     maxLength={180}
                     {...register('email')}
                   />
                   <Input
-                    wrapperClassName="mt-5"
+                    wrapperClassName="mt-4"
                     label="Password"
                     hideLabelOnMobile
-                    placeholder="Enter your password"
+                    placeholder="Password"
                     type="password"
                     autoComplete="off"
                     {...register('password')}
@@ -141,22 +141,22 @@ export default function SignUp() {
                     transition={{ duration: 0.2 }}
                   >
                     <Button
-                      className="mt-6 w-full text-base"
+                      className="mt-4 w-full text-base"
                       type="submit"
                       loading={loading}
                     >
                       Sign up
                     </Button>
-                    <div className="mt-10 flex w-full items-center gap-4">
-                      <div className="h-px w-full bg-border-normal" />
-                      <span className="text-secondary-normal">OR</span>
-                      <div className="h-px w-full bg-border-normal" />
+                    <div className="mt-8 flex w-full items-center gap-4">
+                      <div className="h-px w-full bg-border-main" />
+                      <span className="text-secondary">OR</span>
+                      <div className="h-px w-full bg-border-main" />
                     </div>
-                    <h6 className="mt-10 text-center">
+                    <h6 className="mt-8 text-center">
                       Already have an account?{' '}
                       <Link
                         href="/sign-in"
-                        className="font-bold text-brand-normal hover:underline"
+                        className="font-bold text-brand-main hover:underline"
                       >
                         Sign in now
                       </Link>
@@ -166,12 +166,12 @@ export default function SignUp() {
                 </form>
               </>
             ) : (
-              <div className="relative mt-16 flex flex-col items-center justify-center gap-4 rounded-lg bg-base-normal p-3 text-center text-sm text-secondary-normal shadow-normal md:p-4">
-                <Icon className="h-12 w-12 text-normal" name="at" />
-                <h2 className="text-lg font-bold text-normal">
+              <div className="relative mt-8 flex flex-col items-center justify-center gap-4 rounded-lg bg-base p-3 text-center text-sm text-secondary shadow-normal md:p-4">
+                <Icon className="h-12 w-12 text-main" name="at" />
+                <h2 className="text-lg font-bold text-main">
                   Please confirm your email
                 </h2>
-                <p className="text-normal">
+                <p className="text-main">
                   Your’e almost there! We sent an email to verify your account.
                 </p>
                 <p>
@@ -181,7 +181,7 @@ export default function SignUp() {
                 </p>
                 <p>Still can’t find the email?</p>
                 <button
-                  className="rounded-full border border-normal px-6 py-3 hover:bg-hover-normal"
+                  className="rounded-full border border-main px-6 py-3 hover:bg-hover"
                   onClick={handleResend}
                 >
                   {resending ? 'Resending...' : 'Resend'}
@@ -189,7 +189,7 @@ export default function SignUp() {
                 <p>OR</p>
                 <Link
                   href="/sign-in"
-                  className="pb-3 underline hover:text-normal"
+                  className="pb-3 underline hover:text-main"
                 >
                   Login without verifying my account
                 </Link>

@@ -26,7 +26,7 @@ export default function Content({
   const [windowHeight] = useWindowSize();
   const [stickyValue, setStickyValue] = useState(0);
   const [marginTop, setMarginTop] = useState(0);
-  const { user, isLoading } = useMe();
+  const { user } = useMe();
   const [navbarMobileVisible, setNavbarMobileVisible] = useState(false);
 
   const handleOpenNavbarMobile = () => {
@@ -119,13 +119,13 @@ export default function Content({
         onClose={handleCloseNavbarMobile}
       />
       <div className="flex min-h-screen w-full gap-5">
-        <div className="border-l-none basis-full border-normal lg:border-l xl:basis-2/3 xl:border-r">
+        <div className="border-l-none basis-full border-main lg:border-l xl:basis-2/3 xl:border-r">
           {!!title && (
-            <div className="sticky top-0 z-10 mb-4 flex h-14 items-center justify-center border-b border-normal bg-base-normal/30 backdrop-blur-md md:h-16 lg:h-20 lg:justify-start">
+            <div className="sticky top-0 z-10 mb-4 flex h-14 items-center justify-center border-b border-main bg-base md:h-16 lg:h-20 lg:justify-start lg:bg-base/30 lg:backdrop-blur-md">
               <button
                 className={twMerge(
                   'absolute left-4 top-1/2 h-8 w-8 -translate-y-1/2 overflow-hidden rounded-full bg-opacity-10 md:h-9 md:w-9 lg:hidden',
-                  !user?.avatar && 'bg-secondary-normal',
+                  !user?.avatar && 'bg-secondary',
                 )}
                 onClick={handleOpenNavbarMobile}
               >
@@ -154,24 +154,24 @@ export default function Content({
               }}
               ref={sidebar}
             >
-              <div className="sticky top-0 flex h-14 w-full flex-col justify-center bg-base-normal md:h-16 lg:h-20">
-                <div className="relative flex flex-row-reverse items-center overflow-hidden rounded-full bg-secondary-normal">
+              <div className="sticky top-0 flex h-14 w-full flex-col justify-center bg-base md:h-16 lg:h-20">
+                <div className="relative flex flex-row-reverse items-center overflow-hidden rounded-full bg-secondary">
                   <input
-                    className="peer h-full w-full rounded-full border border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-normal placeholder:text-secondary-normal focus:border-brand-normal focus:outline-none focus:ring-1 focus:ring-brand-normal"
+                    className="peer h-full w-full rounded-full border border-transparent bg-transparent py-3 pl-10 pr-3 text-base transition duration-normal placeholder:text-secondary focus:border-brand-main focus:outline-none focus:ring-1 focus:ring-brand-main"
                     placeholder="Search Laundrex"
                   />
-                  <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 text-secondary-normal peer-focus:text-brand-normal">
+                  <div className="absolute inset-y-0 left-3 flex h-full items-center justify-center bg-opacity-0 text-secondary peer-focus:text-brand-main">
                     <Icon className="h-5 w-5" name="search" />
                   </div>
                 </div>
               </div>
-              <div className="mt-4 h-40 w-full rounded-2xl bg-normal px-4 py-3">
+              <div className="mt-4 h-40 w-full rounded-2xl bg-main px-4 py-3">
                 <h3 className="text-xl font-bold">Features</h3>
               </div>
-              <div className="mt-4 h-96 w-full rounded-2xl bg-normal px-4 py-3">
+              <div className="mt-4 h-96 w-full rounded-2xl bg-main px-4 py-3">
                 <h3 className="text-xl font-bold">Trending</h3>
               </div>
-              <div className="mt-4 h-72 w-full rounded-2xl bg-normal px-4 py-3">
+              <div className="mt-4 h-72 w-full rounded-2xl bg-main px-4 py-3">
                 <h3 className="text-xl font-bold">Suggestions</h3>
               </div>
               <div className="mt-4 h-64 w-full rounded-2xl bg-transparent px-4 py-3">

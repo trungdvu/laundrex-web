@@ -21,7 +21,7 @@ function TotalCard({ title, number, icon, className }: TotalCardProps) {
   return (
     <div
       className={twMerge(
-        'flex flex-col gap-2 rounded-2xl bg-normal p-4 text-sm md:text-base',
+        'bg-main flex flex-col gap-2 rounded-2xl p-4 text-sm md:text-base',
         className,
       )}
     >
@@ -29,7 +29,7 @@ function TotalCard({ title, number, icon, className }: TotalCardProps) {
         <span className="mr-1">{title}</span>
         {icon && icon}
       </div>
-      <div className="h-px w-full bg-border-normal" />
+      <div className="bg-border-main h-px w-full" />
       <span className="block text-lg font-bold md:text-2xl">{number}</span>
     </div>
   );

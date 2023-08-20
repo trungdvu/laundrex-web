@@ -4,17 +4,17 @@
 
 @layer base {
   html {
-    @apply bg-base-normal;
+    @apply bg-base;
   }
   body {
-    @apply overscroll-y-auto text-base text-normal lg:overscroll-y-none;
+    @apply overscroll-y-auto text-base text-main lg:overscroll-y-none;
   }
 
   *::-moz-selection {
-    @apply bg-brand-normal bg-opacity-20;
+    @apply bg-brand-main bg-opacity-20;
   }
 
   *::selection {
-    @apply bg-brand-normal bg-opacity-20;
+    @apply bg-brand-main bg-opacity-20;
   }
 }

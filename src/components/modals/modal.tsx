@@ -30,10 +30,7 @@ function Modal({
           leaveTo="opacity-0"
         >
           <div
-            className={twMerge(
-              'fixed inset-0 bg-backdrop-normal',
-              backdropClassName,
-            )}
+            className={twMerge('bg-backdrop fixed inset-0', backdropClassName)}
           />
         </Transition.Child>
 

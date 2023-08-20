@@ -24,7 +24,7 @@ export default function DisplayName({
       {!!email && !!name && (
         <span
           className={twMerge(
-            'mt-0.5 block text-sm font-normal text-secondary-normal',
+            'text-secondary mt-0.5 block text-sm font-normal',
             supportTextClassName,
           )}
         >

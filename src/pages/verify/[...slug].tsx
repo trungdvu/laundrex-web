@@ -37,7 +37,7 @@ export default function AccountConfirmation({ success }: Props) {
             ? 'Your account has been verified'
             : 'Couldn’t verify this account'}
         </h1>
-        <p className="text-secondary-normal">
+        <p className="text-secondary">
           {success
             ? 'Thanks to this, we’ve been able to confirm you’re the one who has signed up for Laundrex.'
             : 'Looks like your request link has been expired or the link has been used.'}

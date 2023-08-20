@@ -67,7 +67,7 @@ export default function Popover({
           >
             <HUIPopover.Panel
               className={twMerge(
-                'rounded-lg bg-base-normal shadow-normal',
+                'bg-base rounded-lg shadow-normal',
                 panelClassName,
               )}
               ref={setPopperElement}

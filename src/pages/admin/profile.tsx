@@ -92,8 +92,8 @@ export default function Profile() {
         ) : (
           <>
             <div className="flex items-center px-4 py-2.5">
-              <IconButton className="ml-1 mr-4" onClick={router.back}>
-                <Icon className="h-5 w-5 text-normal" name="arrow-left" />
+              <IconButton className="mr-4" onClick={router.back}>
+                <Icon className="h-5 w-5 text-main" name="arrow-left" />
               </IconButton>
               <DisplayName
                 name={user?.name}
@@ -139,7 +139,7 @@ export default function Profile() {
                 className="text-xl"
                 supportTextClassName="text-base mt-0"
               />
-              <span className="mt-2 flex items-center gap-1 text-secondary-normal">
+              <span className="mt-2 flex items-center gap-1 text-secondary">
                 <Icon className="h-5 w-5" name="calendar" />
                 <span>Joined {dayjs(user?.createdAt).format('MMMM YYYY')}</span>
               </span>

@@ -49,7 +49,7 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
     >
       <Dialog.Panel className="h-full w-full overflow-y-scroll">
         <button
-          className="md:4 fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full p-2 text-normal hover:text-opacity-60"
+          className="md:4 text-main fixed bottom-10 left-1/2 top-auto -translate-x-1/2 rounded-full p-2 hover:text-opacity-60"
           onClick={onClose}
         >
           <Icon name="cross" className="h-5 w-5 md:h-6 md:w-6" />
@@ -82,7 +82,7 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
                 href={href}
                 key={href}
               >
-                <span className="max-w-min rounded-full p-3 transition duration-normal group-hover/item:bg-secondary-normal group-hover/item:bg-opacity-10">
+                <span className="max-w-min rounded-full p-3 transition duration-normal group-hover/item:bg-secondary group-hover/item:bg-opacity-10">
                   {title}
                 </span>
               </Link>
@@ -92,7 +92,7 @@ export default function NavbarMobileModal({ show, onClose }: Props) {
             className="group/item flex justify-center p-3"
             onClick={handleSignOut}
           >
-            <span className="relative max-w-max rounded-full transition duration-normal group-hover/item:bg-secondary-normal group-hover/item:bg-opacity-10">
+            <span className="relative max-w-max rounded-full transition duration-normal group-hover/item:bg-secondary group-hover/item:bg-opacity-10">
               Sign out
               {signingOut && (
                 <div className="absolute -right-10 top-1/2 -translate-y-1/2">
